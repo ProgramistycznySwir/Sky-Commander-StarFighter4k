@@ -34,8 +34,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.075, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4395341481583273105}
-  m_RootOrder: 1
+  m_Father: {fileID: 1310593807418121516}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990359591815401546
 SpriteRenderer:
@@ -85,6 +85,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7025813187773648350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1310593807418121516}
+  m_Layer: 9
+  m_Name: 1 Engines
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1310593807418121516
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7025813187773648350}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8492692918079067680}
+  - {fileID: 7005775615711425312}
+  - {fileID: 1965834342703204303}
+  m_Father: {fileID: 4395341481583273105}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7259363835063263059
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,8 +146,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.045, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4395341481583273105}
-  m_RootOrder: 2
+  m_Father: {fileID: 1310593807418121516}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8195556129961612867
 SpriteRenderer:
@@ -175,7 +208,7 @@ GameObject:
   - component: {fileID: 4666300116174280798}
   - component: {fileID: 4350162760885214955}
   m_Layer: 9
-  m_Name: DoubleEngineSmallShipModel
+  m_Name: 0 DoubleEngineSmallShipModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -275,9 +308,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4666300116174280798}
-  - {fileID: 8492692918079067680}
-  - {fileID: 7005775615711425312}
-  - {fileID: 1965834342703204303}
+  - {fileID: 1310593807418121516}
   - {fileID: 8731196970264839496}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -401,8 +432,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.315, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4395341481583273105}
-  m_RootOrder: 3
+  m_Father: {fileID: 1310593807418121516}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6957894319506636957
 SpriteRenderer:
@@ -497,7 +528,7 @@ PrefabInstance:
     - target: {fileID: 791263310161236181, guid: 1174108c55609ab409ce2b0bfabd931f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 791263310161236181, guid: 1174108c55609ab409ce2b0bfabd931f,
         type: 3}
@@ -517,7 +548,7 @@ PrefabInstance:
     - target: {fileID: 7463612574879040860, guid: 1174108c55609ab409ce2b0bfabd931f,
         type: 3}
       propertyPath: m_Name
-      value: Turret
+      value: 2 Turret
       objectReference: {fileID: 0}
     - target: {fileID: 533951492406770711, guid: 1174108c55609ab409ce2b0bfabd931f,
         type: 3}

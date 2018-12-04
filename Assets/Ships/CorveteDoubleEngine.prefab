@@ -550,5 +550,15 @@ PrefabInstance:
       propertyPath: reloadRate
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 533951492406770711, guid: 1174108c55609ab409ce2b0bfabd931f,
+        type: 3}
+      propertyPath: magazineSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 533951492406770711, guid: 1174108c55609ab409ce2b0bfabd931f,
+        type: 3}
+      propertyPath: rounds
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1174108c55609ab409ce2b0bfabd931f, type: 3}

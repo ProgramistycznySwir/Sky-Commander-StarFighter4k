@@ -21,12 +21,14 @@ public class Turret_Control : MonoBehaviour
     public float reloadRate = 1f;
     float reloadVAR = 0f;
     public int magazineSize = 50;
-    int rounds = 50;
+    public int rounds = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+
+        rounds = magazineSize;
     }
 
     // Update is called once per frame
