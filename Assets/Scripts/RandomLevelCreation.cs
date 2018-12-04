@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class RandomLevelCreation : MonoBehaviour
 {
+    [Header("Map size:")]
     public Vector2 mapSize;
 
-    
 
+    [Header("Clusters Settings:")]
     public int numberOfClusters;
     public Vector2 clustersSize;
     public float clusterSizeMaxAbnormality;
     public GameObject asteroidClusterMinimapSprite;
 
+    [Header("Asteroids Settings:")]
     public GameObject[] asteroids;
     public Vector2Int numberOfAsteroidsInCluster;
     public Vector2 asteroidsSize;

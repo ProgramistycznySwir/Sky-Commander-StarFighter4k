@@ -5,24 +5,49 @@ using UnityEngine;
 
 public class EngineControler : MonoBehaviour
 {
+    [Header("RigidBody Socket:")]
+    [Tooltip("Rigidbody of object.")]
     public new Rigidbody2D rigidbody;
 
-    public float forwardPower, backwardPower;
+    [Header("Engines Power:")]
+    [Tooltip("Power of Rear Engines (and RCS).")]
+    public float forwardPower;
+    [Tooltip("Power of Front Engines (and RCS).")]
+    public float backwardPower;
 
-    public GameObject rearEngines, frontEngines;
-    public GameObject rearRCS, frontRCS;
-
-    public float rearExhausBuildup, rearExhaustThreshold; //how many frames
-    public float rearExhaustVisability;
-    public float frontExhausBuildup, frontExhaustThreshold;
-    public float frontExhaustVisability;
+    [Header("Engine Sprites Sockets:")]
+    public GameObject rearEngines;
+    public GameObject frontEngines;
+    public GameObject rearRCS; 
+    public GameObject frontRCS;
+        
+    [Header("Engine Sprites Settings:")]
+    [Tooltip("Time (in frames) that takes to Rear Engines exhaust to turn fully visible, after start of acceleration.")]
+    public float rearExhausBuildup;
+    [Tooltip("Time (in frames) that takes to Rear Engines exhaust to turn fully invisible, after end of acceleration.")]
+    public float rearExhaustThreshold; //how many frames
+    [SerializeField]
+    [Tooltip("Current state of visibility of Rear Engines exhaust.")]
+    float rearExhaustVisability;
+    [Space(5)]
+    [Tooltip("Time (in frames) that takes to Front Engines exhaust to turn fully visible, after start of acceleration.")]
+    public float frontExhausBuildup;
+    [Tooltip("Time (in frames) that takes to Front Engines exhaust to turn fully invisible, after end of acceleration.")]
+    public float frontExhaustThreshold;
+    [SerializeField]
+    [Tooltip("Current state of visibility of Front Engines exhaust.")]
+    float frontExhaustVisability;
 
     bool acceleratedThisFrame = false, deacceleratedThisFrame = false;
 
 
     /// Turning variables;
+    [Header("Turning Sockets:")]
+    [Tooltip("Sprite (actually prefab) that indicates center of turning circle that makes spacecraft.")]
     public GameObject centerOfTurningIndicator;
 
+    [Header("Turning Settings:")]
+    [Tooltip("Power with which spacecraft is pulled toward centerOfTurningCircle (bigger the force, closer the turn).")]
     public float anchorPower;
     Vector2 centerOfTurning;
     Vector2 forceDirrection;

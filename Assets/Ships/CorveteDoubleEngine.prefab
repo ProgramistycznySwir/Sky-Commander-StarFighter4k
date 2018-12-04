@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51d43e09d595724680fcc462164205b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1250
+  health: 3125
   maxVelocity: 25
   deathAnimation: {fileID: 0}
 --- !u!1 &4812771620669108406

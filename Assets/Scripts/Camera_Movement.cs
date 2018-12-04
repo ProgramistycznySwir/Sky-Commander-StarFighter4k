@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Camera_Movement : MonoBehaviour
 {
-    public Transform objectToFollow;
+    [Header("Settings:")]
+    [SerializeField]
     private float z;
     public bool scrool = false;
+    public float sensitivity = 1f;
+    [Header("Sockets:")]
+    public Transform objectToFollow;
+    
 
 
     void Start()

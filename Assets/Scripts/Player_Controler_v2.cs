@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Player_Controler_v2 : MonoBehaviour
 {
-    public KeyCode forward = KeyCode.W, backward = KeyCode.S, left = KeyCode.A, right = KeyCode.D;
+    [Header("Keyboard binding:")]
+    public KeyCode forward = KeyCode.W;
+    public KeyCode backward = KeyCode.S;
+    public KeyCode left = KeyCode.A;
+    public KeyCode right = KeyCode.D;
 
 
 

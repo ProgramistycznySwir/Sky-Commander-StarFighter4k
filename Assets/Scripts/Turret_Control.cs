@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Turret_Control : MonoBehaviour
 {
+    [Header("Cursor:")]
     public Texture2D cursorTexture;
     public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
 
+    [Header("Barrel ends:")]
     public Transform[] barrelEnds;
+
+    [Header("Projectile:")]
     public GameObject projectile;
     public float projectileSpeed;
     public bool deriveSpeed = true;
@@ -16,11 +20,13 @@ public class Turret_Control : MonoBehaviour
     public float displacementInOneShot = -0.005f;
     int a;
 
+    [Header("Firerate and Reloading:")]
     public float firerate = 1f;
     float firerateVAR = 0f;
     public float reloadRate = 1f;
     float reloadVAR = 0f;
     public int magazineSize = 50;
+    [HideInInspector]
     public int rounds = 0;
 
     // Start is called before the first frame update

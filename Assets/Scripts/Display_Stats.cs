@@ -5,12 +5,15 @@ using System;
 
 public class Display_Stats : MonoBehaviour
 {
+    [Header("Speed:")]
     public UnityEngine.UI.Text text;
     public UnityEngine.UI.Image speedMeter;
 
+    [Header("Ammo:")]
     public UnityEngine.UI.Text ammoText;
     public UnityEngine.UI.Image ammoBar;
 
+    [Header("Sockets:")]
     public GameObject shipWhichSpeedDisplay;
     public Color speedWarningColor = Color.red;
     Color basicTextColor;

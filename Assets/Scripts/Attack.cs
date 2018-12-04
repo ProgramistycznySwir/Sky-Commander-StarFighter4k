@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+    [Header("Settings:")]
     public float damage = 3f;
     public int materialisationDelay = 1;
 
