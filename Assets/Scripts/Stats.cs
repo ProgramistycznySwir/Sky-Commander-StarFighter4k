@@ -5,6 +5,7 @@ using UnityEngine;
 public class Stats : MonoBehaviour
 {
     public float health;
+    public float maxVelocity;
     public GameObject deathAnimation;
 
     // Start is called before the first frame update

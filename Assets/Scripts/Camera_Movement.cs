@@ -6,6 +6,7 @@ public class Camera_Movement : MonoBehaviour
 {
     public Transform objectToFollow;
     private float z;
+    public bool scrool = false;
 
 
     void Start()
@@ -17,6 +18,6 @@ public class Camera_Movement : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(objectToFollow.position.x, objectToFollow.position.y, z);
-        gameObject.GetComponent<Camera>().orthographicSize -= Input.GetAxis("Mouse ScrollWheel");
+        if(scrool) gameObject.GetComponent<Camera>().orthographicSize -= Input.GetAxis("Mouse ScrollWheel");
     }
 }
