@@ -720,8 +720,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309204cfebe4fc8428e370fbd601529e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToFollow: {fileID: 1467105606}
+  z: 0
   scrool: 1
+  sensitivity: 1
+  objectToFollow: {fileID: 1467105606}
 --- !u!1001 &1097689115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -833,9 +835,9 @@ RectTransform:
   m_Father: {fileID: 310093649}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -268.5, y: 15.700012}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -2.5, y: 15.700012}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1177819684
@@ -852,15 +854,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4764151, g: 0.95037216, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: a2e42284abf7482409b367c872f22045, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
@@ -907,8 +909,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309204cfebe4fc8428e370fbd601529e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToFollow: {fileID: 1467105606}
+  z: 0
   scrool: 0
+  sensitivity: 1
+  objectToFollow: {fileID: 1467105606}
 --- !u!20 &1419779716
 Camera:
   m_ObjectHideFlags: 0
@@ -1026,9 +1030,9 @@ RectTransform:
   m_Father: {fileID: 310093649}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -330.9, y: -43.1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -64.899994, y: -43.100006}
   m_SizeDelta: {x: 221.20001, y: 146.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1539790440
@@ -1273,5 +1277,10 @@ PrefabInstance:
       propertyPath: centerOfTurningIndicator
       value: 
       objectReference: {fileID: 972724934}
+    - target: {fileID: 4670958350002838517, guid: e00fa45ebfaf5724b8f707049ce24f2d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e00fa45ebfaf5724b8f707049ce24f2d, type: 3}
