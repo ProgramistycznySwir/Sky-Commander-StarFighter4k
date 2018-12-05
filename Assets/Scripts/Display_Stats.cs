@@ -13,6 +13,10 @@ public class Display_Stats : MonoBehaviour
     public UnityEngine.UI.Text ammoText;
     public UnityEngine.UI.Image ammoBar;
 
+    [Header("Health:")]
+    public UnityEngine.UI.Text healthText;
+    public UnityEngine.UI.Image healthBar;
+
     [Header("Sockets:")]
     public GameObject shipWhichSpeedDisplay;
     public Color speedWarningColor = Color.red;
@@ -26,11 +30,13 @@ public class Display_Stats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = Convert.ToString(Convert.ToInt16( shipWhichSpeedDisplay.GetComponent<Rigidbody2D>().velocity.magnitude * 100));
-        if(shipWhichSpeedDisplay.transform.GetChild(2).GetComponent<Weapon_Control_System>()) ammoText.text = Convert.ToString(shipWhichSpeedDisplay.transform.GetChild(2).GetComponent<Weapon_Control_System>().rounds);
+        text.text = Convert.ToString(Convert.ToInt16( shipWhichSpeedDisplay.GetComponent<Rigidbody2D>().velocity.magnitude * 100));        
         if (shipWhichSpeedDisplay.GetComponent<Rigidbody2D>().velocity.magnitude > shipWhichSpeedDisplay.GetComponent<Stats>().maxVelocity) text.color = speedWarningColor;
         else text.color = basicTextColor;
         speedMeter.fillAmount = shipWhichSpeedDisplay.GetComponent<Rigidbody2D>().velocity.magnitude / (shipWhichSpeedDisplay.GetComponent<Stats>().maxVelocity *2);
-        if(shipWhichSpeedDisplay.transform.GetChild(2).GetComponent<Weapon_Control_System>()) ammoBar.fillAmount = Convert.ToSingle(shipWhichSpeedDisplay.transform.GetChild(2).GetComponent<Weapon_Control_System>().rounds) / Convert.ToSingle(shipWhichSpeedDisplay.transform.GetChild(2).GetComponent<Weapon_Control_System>().magazineSize);
+        if (shipWhichSpeedDisplay.transform.GetChild(2).GetComponent<Weapon_Control_System>()) ammoText.text = Convert.ToString(shipWhichSpeedDisplay.transform.GetChild(2).GetComponent<Weapon_Control_System>().rounds);
+        if (shipWhichSpeedDisplay.transform.GetChild(2).GetComponent<Weapon_Control_System>()) ammoBar.fillAmount = Convert.ToSingle(shipWhichSpeedDisplay.transform.GetChild(2).GetComponent<Weapon_Control_System>().rounds) / Convert.ToSingle(shipWhichSpeedDisplay.transform.GetChild(2).GetComponent<Weapon_Control_System>().magazineSize);
+        healthText.text = Convert.ToString(shipWhichSpeedDisplay.GetComponent<Stats>().health);
+        healthBar.fillAmount = Convert.ToSingle(shipWhichSpeedDisplay.GetComponent<Stats>().health / shipWhichSpeedDisplay.GetComponent<Stats>().maxHealth);
     }
 }

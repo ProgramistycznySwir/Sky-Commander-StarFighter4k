@@ -404,6 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 125
+  maxHealth: 125
   maxVelocity: 20
   deathAnimation: {fileID: 0}
 --- !u!1 &8802778609259472727

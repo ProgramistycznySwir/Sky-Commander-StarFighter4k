@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!4 &2736149118361153738 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 791263310161236181, guid: 1174108c55609ab409ce2b0bfabd931f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3387798638487920671}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3456492632044451421 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 791263310161236181, guid: 1174108c55609ab409ce2b0bfabd931f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2669733484158150280}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1865560358752524929
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,6 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 150
+  maxHealth: 150
   maxVelocity: 0
   deathAnimation: {fileID: 0}
 --- !u!1 &1865560359144043513
@@ -449,18 +462,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &3456492632044451421 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 791263310161236181, guid: 1174108c55609ab409ce2b0bfabd931f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2669733484158150280}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2736149118361153738 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 791263310161236181, guid: 1174108c55609ab409ce2b0bfabd931f,
-    type: 3}
-  m_PrefabInstance: {fileID: 3387798638487920671}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2669733484158150280
 PrefabInstance:
   m_ObjectHideFlags: 0

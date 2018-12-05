@@ -600,5 +600,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 80
+  maxHealth: 80
   maxVelocity: 20
   deathAnimation: {fileID: 0}

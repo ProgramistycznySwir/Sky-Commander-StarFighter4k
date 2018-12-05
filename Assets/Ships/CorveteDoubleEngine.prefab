@@ -1,5 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!4 &1324119248338852721 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 791263310161236181, guid: 1174108c55609ab409ce2b0bfabd931f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1773035862402747300}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4670958350002838517
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3125
+  maxHealth: 3125
   maxVelocity: 25
   deathAnimation: {fileID: 0}
 --- !u!1 &4812771620669108406
@@ -448,12 +455,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &1324119248338852721 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 791263310161236181, guid: 1174108c55609ab409ce2b0bfabd931f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1773035862402747300}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1773035862402747300
 PrefabInstance:
   m_ObjectHideFlags: 0

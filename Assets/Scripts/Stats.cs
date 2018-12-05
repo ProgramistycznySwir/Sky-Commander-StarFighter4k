@@ -6,6 +6,7 @@ public class Stats : MonoBehaviour
 {
     [Header("Stats:")]
     public float health;
+    public float maxHealth;
     public float maxVelocity;
 
     [Header("Sockets:")]

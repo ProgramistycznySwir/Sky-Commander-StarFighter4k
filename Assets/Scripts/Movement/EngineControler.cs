@@ -48,8 +48,10 @@ public class EngineControler : MonoBehaviour
     public GameObject centerOfTurningIndicator;
 
     [Header("Turning Settings:")]
-    [Tooltip("Deal damage if spacecraft exceedes max speed?")]
+    [Tooltip("Deal damage if spacecraft exceedes max speed when turning?")]
     public bool overspeedDamage = false;
+    [Tooltip("Damage Multiplier (whole dmg is divided by that, soo smaller the number, bigger the damage)")]
+    public float overspeedDamageDivider = 250f;
     [Tooltip("Power with which spacecraft is pulled toward centerOfTurningCircle (bigger the force, closer the turn).")]
     public float anchorPower;
     Vector2 centerOfTurning;
@@ -155,7 +157,7 @@ public class EngineControler : MonoBehaviour
         if (overspeedDamage && gameObject.GetComponent<EngineControler>() && rigidbody.velocity.magnitude > gameObject.GetComponent<Stats>().maxVelocity)
         {
             float velocityExceeded = rigidbody.velocity.magnitude - gameObject.GetComponent<Stats>().maxVelocity;
-            gameObject.GetComponent<Stats>().TakeDamage(velocityExceeded / 1000 * rigidbody.mass);
+            gameObject.GetComponent<Stats>().TakeDamage(velocityExceeded / overspeedDamageDivider * rigidbody.mass);
         }
 
         turningLeft = true;
@@ -177,6 +179,12 @@ public class EngineControler : MonoBehaviour
         forceDirrection = centerOfTurning - ToVector2(transform.position);
         rigidbody.AddForce(forceDirrection.normalized * anchorPower);
         transform.eulerAngles = new Vector3(0, 0, -((Mathf.Atan2(forceDirrection.x, forceDirrection.y) * 180) / Mathf.PI) + 90);
+
+        if (overspeedDamage && gameObject.GetComponent<EngineControler>() && rigidbody.velocity.magnitude > gameObject.GetComponent<Stats>().maxVelocity)
+        {
+            float velocityExceeded = rigidbody.velocity.magnitude - gameObject.GetComponent<Stats>().maxVelocity;
+            gameObject.GetComponent<Stats>().TakeDamage(velocityExceeded / overspeedDamageDivider * rigidbody.mass);
+        }
 
         turningRight = true;
     }

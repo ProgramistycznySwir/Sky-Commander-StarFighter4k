@@ -1031,7 +1031,7 @@ MonoBehaviour:
   frontExhaustVisability: 0
   showIndicator: 1
   centerOfTurningIndicator: {fileID: 0}
-  overspeedDamage: 0
+  overspeedDamage: 1
   anchorPower: 112.5
 --- !u!114 &6824250630939997384
 MonoBehaviour:
@@ -1047,6 +1047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  maxHealth: 100
   maxVelocity: 25
   deathAnimation: {fileID: 0}
 --- !u!114 &6824250630939997385
