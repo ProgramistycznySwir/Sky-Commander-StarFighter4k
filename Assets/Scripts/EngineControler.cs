@@ -43,6 +43,7 @@ public class EngineControler : MonoBehaviour
 
     /// Turning variables;
     [Header("Turning Sockets:")]
+    public bool showIndicator = true;
     [Tooltip("Sprite (actually prefab) that indicates center of turning circle that makes spacecraft.")]
     public GameObject centerOfTurningIndicator;
 
@@ -52,7 +53,7 @@ public class EngineControler : MonoBehaviour
     Vector2 centerOfTurning;
     Vector2 forceDirrection;
     bool turningLeft = false, turningRight = false;
-    bool startedTurningLeft = false, startedTurningRight = false;
+    bool startedTurningLeft = true, startedTurningRight = true;
 
     float velocityOnTurningStart;  // leczenie objawowe :/
 
@@ -107,6 +108,7 @@ public class EngineControler : MonoBehaviour
             startedTurningLeft = true;
             rigidbody.velocity = transform.up * Mathf.Sqrt(velocityOnTurningStart); //to też jest leczeniem objawowym
             rigidbody.angularVelocity = 0f; // leczenie objawowe
+            Debug.Log("This Motherfucker");
         }
         turningLeft = false;
         if (!turningRight && !startedTurningRight)
@@ -114,6 +116,7 @@ public class EngineControler : MonoBehaviour
             startedTurningRight = true;
             rigidbody.velocity = transform.up * Mathf.Sqrt(velocityOnTurningStart); //i to
             rigidbody.angularVelocity = 0f; //oraz to <-
+            Debug.Log("This Motherfucker");
         }
         turningRight = false;
     }
@@ -137,8 +140,8 @@ public class EngineControler : MonoBehaviour
 
             centerOfTurning = transform.position + new Vector3(Mathf.Cos((transform.eulerAngles.z * Mathf.PI) / 180) * -radiusOfTurning, Mathf.Sin((transform.eulerAngles.z * Mathf.PI) / 180) * -radiusOfTurning, 0);
             
-            centerOfTurningIndicator.transform.position = centerOfTurning;
-            Debug.Log(forceDirrection);
+            if(showIndicator) centerOfTurningIndicator.transform.position = centerOfTurning;
+            Debug.Log(centerOfTurning);
             startedTurningLeft = false;
         }
         
@@ -157,8 +160,8 @@ public class EngineControler : MonoBehaviour
 
             centerOfTurning = transform.position + new Vector3(Mathf.Cos((transform.eulerAngles.z * Mathf.PI) / 180) * radiusOfTurning, Mathf.Sin((transform.eulerAngles.z * Mathf.PI) / 180) * radiusOfTurning, 0);
 
-            centerOfTurningIndicator.transform.position = centerOfTurning;
-            Debug.Log(forceDirrection);
+            if (showIndicator) centerOfTurningIndicator.transform.position = centerOfTurning;
+            Debug.Log(centerOfTurning);
             startedTurningRight = false;            
         }
 
