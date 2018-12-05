@@ -119,9 +119,9 @@ MonoBehaviour:
   deriveSpeed: 1
   projectilesAtOnce: 1
   displacementInOneShot: -0.2
-  firerate: 30
-  reloadRate: 10
-  magazineSize: 50
+  firerate: 20
+  reloadRate: 8
+  magazineSize: 20
   rounds: 0
 --- !u!1 &7822159056973069361
 GameObject:

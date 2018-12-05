@@ -570,8 +570,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 3270740786151511023}
-  forwardPower: 12
-  backwardPower: 10
+  forwardPower: 18
+  backwardPower: 15
   rearEngines: {fileID: 3270740785589235640}
   frontEngines: {fileID: 0}
   rearRCS: {fileID: 3270740785695922624}
@@ -584,7 +584,8 @@ MonoBehaviour:
   frontExhaustVisability: 0
   showIndicator: 1
   centerOfTurningIndicator: {fileID: 0}
-  anchorPower: 80
+  overspeedDamage: 0
+  anchorPower: 120
 --- !u!114 &3270740786151511021
 MonoBehaviour:
   m_ObjectHideFlags: 0

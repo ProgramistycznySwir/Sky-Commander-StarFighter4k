@@ -48,6 +48,8 @@ public class EngineControler : MonoBehaviour
     public GameObject centerOfTurningIndicator;
 
     [Header("Turning Settings:")]
+    [Tooltip("Deal damage if spacecraft exceedes max speed?")]
+    public bool overspeedDamage = false;
     [Tooltip("Power with which spacecraft is pulled toward centerOfTurningCircle (bigger the force, closer the turn).")]
     public float anchorPower;
     Vector2 centerOfTurning;
@@ -119,6 +121,7 @@ public class EngineControler : MonoBehaviour
             Debug.Log("This Motherfucker");
         }
         turningRight = false;
+        
     }
 
     public void Accelerate()
@@ -148,6 +151,12 @@ public class EngineControler : MonoBehaviour
         forceDirrection = centerOfTurning - ToVector2(transform.position);
         rigidbody.AddForce(forceDirrection.normalized*anchorPower);
         transform.eulerAngles = new Vector3(0, 0, -((Mathf.Atan2(forceDirrection.x, forceDirrection.y) * 180) / Mathf.PI) - 90);
+
+        if (overspeedDamage && gameObject.GetComponent<EngineControler>() && rigidbody.velocity.magnitude > gameObject.GetComponent<Stats>().maxVelocity)
+        {
+            float velocityExceeded = rigidbody.velocity.magnitude - gameObject.GetComponent<Stats>().maxVelocity;
+            gameObject.GetComponent<Stats>().TakeDamage(velocityExceeded / 1000 * rigidbody.mass);
+        }
 
         turningLeft = true;
     }

@@ -80,13 +80,13 @@ MonoBehaviour:
   - {fileID: 6116611397463903077}
   projectile: {fileID: 5924105842528096658, guid: 08b8ad3e49998df4e8d187b28d5b3274,
     type: 3}
-  projectileSpeed: 20
+  projectileSpeed: 30
   deriveSpeed: 1
   projectilesAtOnce: 3
   displacementInOneShot: -0.2
-  firerate: 40
-  reloadRate: 20
-  magazineSize: 80
+  firerate: 30
+  reloadRate: 15
+  magazineSize: 40
   rounds: 0
   limits: {x: 24, y: 12}
   target: {x: 0, y: 0, z: 0}
