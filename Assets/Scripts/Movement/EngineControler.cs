@@ -48,6 +48,9 @@ public class EngineControler : MonoBehaviour
     public GameObject centerOfTurningIndicator;
 
     [Header("Turning Settings:")]
+    public int stunDuration = 25;
+    [SerializeField]
+    public int stun;
     [Tooltip("Deal damage if spacecraft exceedes max speed when turning?")]
     public bool overspeedDamage = false;
     [Tooltip("Damage Multiplier (whole dmg is divided by that, soo smaller the number, bigger the damage)")]
@@ -61,6 +64,14 @@ public class EngineControler : MonoBehaviour
 
     float velocityOnTurningStart;  // leczenie objawowe :/
 
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.collider.tag != "projectile")
+        {
+            stun = stunDuration;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -112,7 +123,6 @@ public class EngineControler : MonoBehaviour
             startedTurningLeft = true;
             rigidbody.velocity = transform.up * Mathf.Sqrt(velocityOnTurningStart); //to też jest leczeniem objawowym
             rigidbody.angularVelocity = 0f; // leczenie objawowe
-            Debug.Log("This Motherfucker");
         }
         turningLeft = false;
         if (!turningRight && !startedTurningRight)
@@ -120,10 +130,9 @@ public class EngineControler : MonoBehaviour
             startedTurningRight = true;
             rigidbody.velocity = transform.up * Mathf.Sqrt(velocityOnTurningStart); //i to
             rigidbody.angularVelocity = 0f; //oraz to <-
-            Debug.Log("This Motherfucker");
         }
         turningRight = false;
-        
+        if (stun > 0) stun--;
     }
 
     public void Accelerate()
@@ -138,55 +147,62 @@ public class EngineControler : MonoBehaviour
     }
     public void TurnLeft()
     {
-        if (startedTurningLeft)
+        if (stun <= 0)
         {
-            velocityOnTurningStart = rigidbody.velocity.sqrMagnitude;
-            float radiusOfTurning = (rigidbody.mass * rigidbody.velocity.sqrMagnitude) / anchorPower;            
+            if (startedTurningLeft)
+            {
+                velocityOnTurningStart = rigidbody.velocity.sqrMagnitude;
+                float radiusOfTurning = (rigidbody.mass * rigidbody.velocity.sqrMagnitude) / anchorPower;
 
-            centerOfTurning = transform.position + new Vector3(Mathf.Cos((transform.eulerAngles.z * Mathf.PI) / 180) * -radiusOfTurning, Mathf.Sin((transform.eulerAngles.z * Mathf.PI) / 180) * -radiusOfTurning, 0);
-            
-            if(showIndicator) centerOfTurningIndicator.transform.position = centerOfTurning;
-            Debug.Log(centerOfTurning);
-            startedTurningLeft = false;
+                centerOfTurning = transform.position + new Vector3(Mathf.Cos((transform.eulerAngles.z * Mathf.PI) / 180) * -radiusOfTurning, Mathf.Sin((transform.eulerAngles.z * Mathf.PI) / 180) * -radiusOfTurning, 0);
+
+                if (showIndicator) centerOfTurningIndicator.transform.position = centerOfTurning;
+                Debug.Log(centerOfTurning);
+                startedTurningLeft = false;
+            }
+
+            forceDirrection = centerOfTurning - ToVector2(transform.position);
+            rigidbody.AddForce(forceDirrection.normalized * anchorPower);
+            transform.eulerAngles = new Vector3(0, 0, -((Mathf.Atan2(forceDirrection.x, forceDirrection.y) * 180) / Mathf.PI) - 90);
+
+            if (overspeedDamage && gameObject.GetComponent<EngineControler>() && rigidbody.velocity.magnitude > gameObject.GetComponent<Stats>().maxVelocity)
+            {
+                float velocityExceeded = rigidbody.velocity.magnitude - gameObject.GetComponent<Stats>().maxVelocity;
+                gameObject.GetComponent<Stats>().TakeDamage(velocityExceeded / overspeedDamageDivider * rigidbody.mass);
+            }
+
+            turningLeft = true;
         }
-        
-        forceDirrection = centerOfTurning - ToVector2(transform.position);
-        rigidbody.AddForce(forceDirrection.normalized*anchorPower);
-        transform.eulerAngles = new Vector3(0, 0, -((Mathf.Atan2(forceDirrection.x, forceDirrection.y) * 180) / Mathf.PI) - 90);
-
-        if (overspeedDamage && gameObject.GetComponent<EngineControler>() && rigidbody.velocity.magnitude > gameObject.GetComponent<Stats>().maxVelocity)
-        {
-            float velocityExceeded = rigidbody.velocity.magnitude - gameObject.GetComponent<Stats>().maxVelocity;
-            gameObject.GetComponent<Stats>().TakeDamage(velocityExceeded / overspeedDamageDivider * rigidbody.mass);
-        }
-
-        turningLeft = true;
     }
     public void TurnRight()
     {
-        if (startedTurningRight)
+        if (stun <= 0)
         {
-            velocityOnTurningStart = rigidbody.velocity.sqrMagnitude;
-            float radiusOfTurning = (rigidbody.mass * rigidbody.velocity.sqrMagnitude) / anchorPower;
+            if (startedTurningRight)
+            {
+                velocityOnTurningStart = rigidbody.velocity.sqrMagnitude;
+                float radiusOfTurning = (rigidbody.mass * rigidbody.velocity.sqrMagnitude) / anchorPower;
 
-            centerOfTurning = transform.position + new Vector3(Mathf.Cos((transform.eulerAngles.z * Mathf.PI) / 180) * radiusOfTurning, Mathf.Sin((transform.eulerAngles.z * Mathf.PI) / 180) * radiusOfTurning, 0);
+                centerOfTurning = transform.position + new Vector3(Mathf.Cos((transform.eulerAngles.z * Mathf.PI) / 180) * radiusOfTurning, Mathf.Sin((transform.eulerAngles.z * Mathf.PI) / 180) * radiusOfTurning, 0);
 
-            if (showIndicator) centerOfTurningIndicator.transform.position = centerOfTurning;
-            Debug.Log(centerOfTurning);
-            startedTurningRight = false;            
+                if (showIndicator) centerOfTurningIndicator.transform.position = centerOfTurning;
+                Debug.Log(centerOfTurning);
+                startedTurningRight = false;
+            }
+
+            forceDirrection = centerOfTurning - ToVector2(transform.position);
+            rigidbody.AddForce(forceDirrection.normalized * anchorPower);
+            transform.eulerAngles = new Vector3(0, 0, -((Mathf.Atan2(forceDirrection.x, forceDirrection.y) * 180) / Mathf.PI) + 90);
+
+            if (overspeedDamage && gameObject.GetComponent<EngineControler>() && rigidbody.velocity.magnitude > gameObject.GetComponent<Stats>().maxVelocity)
+            {
+                float velocityExceeded = rigidbody.velocity.magnitude - gameObject.GetComponent<Stats>().maxVelocity;
+                gameObject.GetComponent<Stats>().TakeDamage(velocityExceeded / overspeedDamageDivider * rigidbody.mass);
+            }
+
+            turningRight = true; 
         }
-
-        forceDirrection = centerOfTurning - ToVector2(transform.position);
-        rigidbody.AddForce(forceDirrection.normalized * anchorPower);
-        transform.eulerAngles = new Vector3(0, 0, -((Mathf.Atan2(forceDirrection.x, forceDirrection.y) * 180) / Mathf.PI) + 90);
-
-        if (overspeedDamage && gameObject.GetComponent<EngineControler>() && rigidbody.velocity.magnitude > gameObject.GetComponent<Stats>().maxVelocity)
-        {
-            float velocityExceeded = rigidbody.velocity.magnitude - gameObject.GetComponent<Stats>().maxVelocity;
-            gameObject.GetComponent<Stats>().TakeDamage(velocityExceeded / overspeedDamageDivider * rigidbody.mass);
-        }
-
-        turningRight = true;
+        else turningLeft = true;
     }
     public static Vector2 ToVector2(Vector3 vector3)
     {

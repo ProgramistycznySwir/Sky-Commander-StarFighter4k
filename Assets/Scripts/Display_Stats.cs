@@ -17,6 +17,10 @@ public class Display_Stats : MonoBehaviour
     public UnityEngine.UI.Text healthText;
     public UnityEngine.UI.Image healthBar;
 
+    [Header("Stun:")]
+    public UnityEngine.UI.Image stunImageBlack;
+    public UnityEngine.UI.Image stunImageWhite;
+
     [Header("Sockets:")]
     public GameObject shipWhichSpeedDisplay;
     public Color speedWarningColor = Color.red;
@@ -36,7 +40,11 @@ public class Display_Stats : MonoBehaviour
         speedMeter.fillAmount = shipWhichSpeedDisplay.GetComponent<Rigidbody2D>().velocity.magnitude / (shipWhichSpeedDisplay.GetComponent<Stats>().maxVelocity *2);
         if (shipWhichSpeedDisplay.transform.GetChild(2).GetComponent<Weapon_Control_System>()) ammoText.text = Convert.ToString(shipWhichSpeedDisplay.transform.GetChild(2).GetComponent<Weapon_Control_System>().rounds);
         if (shipWhichSpeedDisplay.transform.GetChild(2).GetComponent<Weapon_Control_System>()) ammoBar.fillAmount = Convert.ToSingle(shipWhichSpeedDisplay.transform.GetChild(2).GetComponent<Weapon_Control_System>().rounds) / Convert.ToSingle(shipWhichSpeedDisplay.transform.GetChild(2).GetComponent<Weapon_Control_System>().magazineSize);
+
         healthText.text = Convert.ToString(shipWhichSpeedDisplay.GetComponent<Stats>().health);
         healthBar.fillAmount = Convert.ToSingle(shipWhichSpeedDisplay.GetComponent<Stats>().health / shipWhichSpeedDisplay.GetComponent<Stats>().maxHealth);
+
+        stunImageBlack.color = new Color(0, 0, 0, Convert.ToSingle(shipWhichSpeedDisplay.GetComponent<EngineControler>().stun) / Convert.ToSingle(shipWhichSpeedDisplay.GetComponent<EngineControler>().stunDuration) / 3f);
+        stunImageWhite.color = new Color(1, 1, 1, Convert.ToSingle(shipWhichSpeedDisplay.GetComponent<EngineControler>().stun) / Convert.ToSingle(shipWhichSpeedDisplay.GetComponent<EngineControler>().stunDuration) / 3f);
     }
 }
