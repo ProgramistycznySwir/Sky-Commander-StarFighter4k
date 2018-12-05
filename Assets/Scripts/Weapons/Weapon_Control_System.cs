@@ -18,12 +18,19 @@ public class Weapon_Control_System : MonoBehaviour
     public KeyCode fireRockets;
     public KeyCode fireFrontalCannons;
 
+    [SerializeField]
+    public int rounds, magazineSize;
+
     //Transform cursorTransform;
 
 
     void Start()
     {
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        for(int a=0; a < frontCannons.Length; a++)
+        {            
+            magazineSize += frontCannons[a].magazineSize;
+        }
     }
 
     // Update is called once per frame
@@ -34,6 +41,8 @@ public class Weapon_Control_System : MonoBehaviour
         //Vector2 direction = new Vector2(cursor.x - transform.position.x, cursor.y - transform.position.y);
         //transform.up = direction;
 
+        rounds = 0;
+
         int a = 0;
         while (a < frontCannons.Length)
         {
@@ -42,6 +51,7 @@ public class Weapon_Control_System : MonoBehaviour
             {
                 frontCannons[a].Fire();
             }            
+            rounds += frontCannons[a].rounds;
             a++;
         }
         
