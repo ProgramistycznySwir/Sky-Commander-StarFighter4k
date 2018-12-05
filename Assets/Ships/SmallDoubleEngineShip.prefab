@@ -386,8 +386,9 @@ MonoBehaviour:
   frontExhausBuildup: 8
   frontExhaustThreshold: 4
   frontExhaustVisability: 0
+  showIndicator: 1
   centerOfTurningIndicator: {fileID: 0}
-  anchorPower: 100
+  anchorPower: 120
 --- !u!114 &7450972131841874763
 MonoBehaviour:
   m_ObjectHideFlags: 0
