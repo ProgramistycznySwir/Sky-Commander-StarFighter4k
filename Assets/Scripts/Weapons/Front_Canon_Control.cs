@@ -67,10 +67,10 @@ public class Front_Canon_Control : MonoBehaviour
 
         if (sumValue > limits.x)
         {
-            transform.eulerAngles.Set(0,0,limits.x + transform.parent.transform.up.z);//transform.localEulerAngles.Set(0, 0, limits.x);
+            transform.eulerAngles = new Vector3(0, 0, transform.parent.transform.eulerAngles.z + limits.x);//transform.eulerAngles.Set(0, 0, limits.x + transform.parent.transform.up.z);//transform.localEulerAngles.Set(0, 0, limits.x);
             Debug.Log("Doin' ma part");
         }
-        else if (sumValue < limits.y) transform.localEulerAngles.Set(0, 0, 360 - limits.y);
+        else if (sumValue < limits.y) transform.eulerAngles = new Vector3(0, 0, transform.parent.transform.eulerAngles.z + limits.y);
         Debug.Log(transform.localEulerAngles.z + " / " + sumValue + " / " + limits.x);
 
         firerateVAR -= firerate * Time.deltaTime;

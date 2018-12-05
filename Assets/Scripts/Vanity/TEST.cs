@@ -9,6 +9,7 @@ public class TEST : MonoBehaviour
     public float radiusOfTurning = 5;
     Rigidbody2D rigidbody;
     float force;
+    public float snuffe;
 
     void Start()
     {
@@ -19,7 +20,8 @@ public class TEST : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation.Set(0,0,2,1);
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, snuffe));
+        //transform.Rotate(new Vector3(snuffe, snuffe, snuffe));
 
 
         //transform.eulerAngles = new Vector3(0,0, -((Mathf.Atan2(snuff.position.x - transform.position.x, snuff.position.y - transform.position.y)*180) / Mathf.PI)+90);
