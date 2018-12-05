@@ -128,7 +128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &288893877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,6 +1051,12 @@ MonoBehaviour:
   backward: 115
   left: 97
   right: 100
+--- !u!4 &1467105606 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4395341481583273105, guid: 85cfe150b5315f244aabea17ef94c734,
+    type: 3}
+  m_PrefabInstance: {fileID: 1097689115}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1539790438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,16 +1313,16 @@ PrefabInstance:
       propertyPath: centerOfTurningIndicator
       value: 
       objectReference: {fileID: 972724934}
+    - target: {fileID: 3270740786151511016, guid: 14ea3cf73fad3ff459edb2bb5bb9d199,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3270740785206016300, guid: 14ea3cf73fad3ff459edb2bb5bb9d199,
         type: 3}
       propertyPath: targetForRockets
       value: 
-      objectReference: {fileID: 1062860513}
-    - target: {fileID: 3270740786151511016, guid: 14ea3cf73fad3ff459edb2bb5bb9d199,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1467105606}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ea3cf73fad3ff459edb2bb5bb9d199, type: 3}
 --- !u!1 &4670958350002838517 stripped

@@ -235,7 +235,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 7.5
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  materialisationDelay: 1
+  materialisationDelay: 20
 --- !u!114 &5073445872347433029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1deb8a48ed5f9e46aa74ffd97106bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 10
+  delay: 100
 --- !u!114 &6847434436084770799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 946815204347519588}
-  forwardPower: 5
+  forwardPower: 75
   backwardPower: 0
   rearEngines: {fileID: 4502426581505017316}
   frontEngines: {fileID: 0}
