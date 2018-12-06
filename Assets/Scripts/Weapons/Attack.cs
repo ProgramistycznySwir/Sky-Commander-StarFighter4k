@@ -14,8 +14,9 @@ public class Attack : MonoBehaviour
         Invoke("Materialise", materialisationDelay * Time.deltaTime);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collision2D collision)
     {
+        Debug.Log("Done shit");
         if (collision.collider.GetComponent<Stats>() != null)
         {
             collision.collider.GetComponent<Stats>().TakeDamage(damage);

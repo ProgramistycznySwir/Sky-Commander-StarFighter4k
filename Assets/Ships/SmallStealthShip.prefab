@@ -547,7 +547,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 8
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -570,8 +570,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 3270740786151511023}
-  forwardPower: 18
-  backwardPower: 15
+  forwardPower: 15
+  backwardPower: 12
   rearEngines: {fileID: 3270740785589235640}
   frontEngines: {fileID: 0}
   rearRCS: {fileID: 3270740785695922624}
@@ -584,8 +584,11 @@ MonoBehaviour:
   frontExhaustVisability: 0
   showIndicator: 1
   centerOfTurningIndicator: {fileID: 0}
+  stunDuration: 25
+  stun: 0
   overspeedDamage: 0
-  anchorPower: 120
+  overspeedDamageDivider: 250
+  anchorPower: 100
 --- !u!114 &3270740786151511021
 MonoBehaviour:
   m_ObjectHideFlags: 0

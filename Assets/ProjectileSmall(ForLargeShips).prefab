@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 6621581282826328463}
   - component: {fileID: 2839726133570751466}
   m_Layer: 10
-  m_Name: ProjectileSmall
+  m_Name: ProjectileSmall(ForLargeShips)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5924105842528096658}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -189,4 +189,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
-  materialisationDelay: 1
+  materialisationDelay: 4
