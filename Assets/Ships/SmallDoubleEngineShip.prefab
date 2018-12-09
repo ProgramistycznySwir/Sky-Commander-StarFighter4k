@@ -388,7 +388,10 @@ MonoBehaviour:
   frontExhaustVisability: 0
   showIndicator: 1
   centerOfTurningIndicator: {fileID: 0}
-  overspeedDamage: 0
+  stunDuration: 25
+  stun: 0
+  overspeedDamage: 1
+  overspeedDamageDivider: 250
   anchorPower: 180
 --- !u!114 &7450972131841874763
 MonoBehaviour:

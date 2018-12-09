@@ -14,12 +14,12 @@ public class Attack : MonoBehaviour
         Invoke("Materialise", materialisationDelay * Time.deltaTime);
     }
 
-    void OnTriggerEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log("Done shit");
-        if (collision.collider.GetComponent<Stats>() != null)
+        if (collider.GetComponent<Stats>() != null)
         {
-            collision.collider.GetComponent<Stats>().TakeDamage(damage);
+            collider.GetComponent<Stats>().TakeDamage(damage);
         }
         Destroy(gameObject);
     }
