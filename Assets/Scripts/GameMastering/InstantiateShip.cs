@@ -5,6 +5,7 @@ using UnityEngine;
 public class InstantiateShip : MonoBehaviour
 {
     public GameObject[] cameras;
+    public GameObject statsDisplayer;
 
     public GameObject[] ships;
     public GameObject node;
@@ -20,6 +21,7 @@ public class InstantiateShip : MonoBehaviour
         GameObject newShip = Instantiate(ships[newShipID], oldShip.transform.position, oldShip.transform.rotation);
         newShip.AddComponent<Player_Controler_v2>();
         newShip.GetComponent<EngineControler>().centerOfTurningIndicator = node;
+        statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;
         for (int a = 0; a < cameras.Length; a++)
         {
             cameras[a].GetComponent<Camera_Movement>().objectToFollow = newShip.transform;
@@ -37,6 +39,7 @@ public class InstantiateShip : MonoBehaviour
         GameObject newShip = Instantiate(ships[newShipID], where.position, where.rotation);
         newShip.AddComponent<Player_Controler_v2>();
         newShip.GetComponent<EngineControler>().centerOfTurningIndicator = node;
+        statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;
         for (int a = 0; a < cameras.Length; a++)
         {
             cameras[a].GetComponent<Camera_Movement>().objectToFollow = newShip.transform;
@@ -53,21 +56,58 @@ public class InstantiateShip : MonoBehaviour
         GameObject newShip = Instantiate(ships[shipID], where.position, where.rotation);
         newShip.AddComponent<Player_Controler_v2>();
         newShip.GetComponent<EngineControler>().centerOfTurningIndicator = node;
+        statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;
         for (int a = 0; a < cameras.Length; a++)
         {
             cameras[a].GetComponent<Camera_Movement>().objectToFollow = newShip.transform;
         }
     }
-    public void NoParameterFunc()
+    /// <summary>
+    /// Overload
+    /// </summary>
+    /// <param name="shipID"> Just ID of new ship</param>
+    /// <param name="where"> Coordinates where to put new ship</param>
+    public void GivePlayerAShip(int shipID, Vector3 whereP, Quaternion whereQ)
+    {
+        GameObject newShip = Instantiate(ships[shipID], whereP, whereQ);
+        newShip.AddComponent<Player_Controler_v2>();
+        newShip.GetComponent<EngineControler>().centerOfTurningIndicator = node;
+        statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;
+        for (int a = 0; a < cameras.Length; a++)
+        {
+            cameras[a].GetComponent<Camera_Movement>().objectToFollow = newShip.transform;
+        }
+    }
+    /// <summary>
+    /// Overload
+    /// </summary>
+    /// <param name="shipID"> Just ID of new ship</param>
+    /// <param name="where"> Coordinates where to put new ship</param>
+    public void GivePlayerAShip(int shipID, Vector3 whereP)
+    {
+        GameObject newShip = Instantiate(ships[shipID], whereP, new Quaternion(0,0,0,0));
+        newShip.AddComponent<Player_Controler_v2>();
+        newShip.GetComponent<EngineControler>().centerOfTurningIndicator = node;
+        statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;
+        for (int a = 0; a < cameras.Length; a++)
+        {
+            cameras[a].GetComponent<Camera_Movement>().objectToFollow = newShip.transform;
+        }
+    }
+    public void GivePlayerAShipButton(int shipID)
     {
         Debug.Log("Harder daddy!");
-
-        //GameObject newShip = Instantiate(ships[shipID], where.position, where.rotation);
-        //newShip.AddComponent<Player_Controler_v2>();
-        //newShip.GetComponent<EngineControler>().centerOfTurningIndicator = node;
-        //for (int a = 0; a < cameras.Length; a++)
-        //{
-        //    cameras[a].GetComponent<Camera_Movement>().objectToFollow = newShip.transform;
-        //}
+        GivePlayerAShip(shipID, new Vector3(0, 0, 0), new Quaternion(0,0,0,0));
+    }
+    public void GiveRandomShipNP()
+    {
+        GameObject newShip = Instantiate(ships[Random.Range(0, ships.Length)], new Vector3(0,0,0), new Quaternion(0,0,0,0));
+        newShip.AddComponent<Player_Controler_v2>();
+        newShip.GetComponent<EngineControler>().centerOfTurningIndicator = node;
+        statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;
+        for (int a = 0; a < cameras.Length; a++)
+        {
+            cameras[a].GetComponent<Camera_Movement>().objectToFollow = newShip.transform;
+        }
     }
 }
