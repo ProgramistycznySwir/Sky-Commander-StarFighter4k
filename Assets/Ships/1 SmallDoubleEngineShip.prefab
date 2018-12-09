@@ -207,6 +207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4666300116174280798}
   - component: {fileID: 4350162760885214955}
+  - component: {fileID: 8771720127944286334}
   m_Layer: 9
   m_Name: 0 DoubleEngineSmallShipModel
   m_TagString: Untagged
@@ -276,6 +277,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &8771720127944286334
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7969878455034889518}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.33, y: 0.59}
+    newSize: {x: 0.33, y: 0.59}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.044999998, y: -0.044999998}
+      - {x: -0.044999998, y: 0.044999998}
+      - {x: -0.105, y: 0.055}
+      - {x: -0.105, y: 0.074999996}
+      - {x: -0.044999998, y: 0.114999995}
+      - {x: -0.044999998, y: 0.265}
+      - {x: -0.035, y: 0.295}
+      - {x: 0.035, y: 0.295}
+      - {x: 0.044999998, y: 0.265}
+      - {x: 0.044999998, y: 0.114999995}
+      - {x: 0.105, y: 0.074999996}
+      - {x: 0.105, y: 0.055}
+      - {x: 0.044999998, y: 0.044999998}
+      - {x: 0.044999998, y: -0.044999998}
+      - {x: 0.065, y: -0.074999996}
+      - {x: 0.065, y: -0.105}
+      - {x: 0.125, y: -0.105}
+      - {x: 0.16499999, y: -0.125}
+      - {x: 0.16499999, y: -0.265}
+      - {x: 0.105, y: -0.255}
+      - {x: 0.065, y: -0.255}
+      - {x: 0.065, y: -0.295}
+      - {x: 0.015, y: -0.275}
+      - {x: -0.015, y: -0.275}
+      - {x: -0.065, y: -0.295}
+      - {x: -0.065, y: -0.255}
+      - {x: -0.105, y: -0.255}
+      - {x: -0.16499999, y: -0.265}
+      - {x: -0.16499999, y: -0.125}
+      - {x: -0.125, y: -0.105}
+      - {x: -0.065, y: -0.105}
+      - {x: -0.065, y: -0.074999996}
 --- !u!1 &8445646180259085738
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,12 +343,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4395341481583273105}
-  - component: {fileID: 3698649516725393266}
   - component: {fileID: 6633424999815183676}
   - component: {fileID: 8688253704724624081}
   - component: {fileID: 7450972131841874763}
   m_Layer: 9
-  m_Name: SmallDoubleEngineShip
+  m_Name: 1 SmallDoubleEngineShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -313,32 +370,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &3698649516725393266
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8445646180259085738}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.000016242266, y: 0.00006112456}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.33145422, y: 0.59379584}
-  m_EdgeRadius: 0
 --- !u!50 &6633424999815183676
 Rigidbody2D:
   serializedVersion: 4
