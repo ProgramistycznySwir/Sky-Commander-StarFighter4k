@@ -4,15 +4,70 @@ using UnityEngine;
 
 public class InstantiateShip : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject[] cameras;
 
-    // Update is called once per frame
-    void Update()
+    public GameObject[] ships;
+    public GameObject node;
+
+
+    /// <summary>
+    /// Method to change player's ship and place new in it's place
+    /// </summary>
+    /// <param name="newShipID"> Just ID of new ship</param>
+    /// <param name="oldShip"> Old ship that you're changing from</param>
+    public void ChangeShip(int newShipID, GameObject oldShip)
     {
-        
+        GameObject newShip = Instantiate(ships[newShipID], oldShip.transform.position, oldShip.transform.rotation);
+        newShip.AddComponent<Player_Controler_v2>();
+        newShip.GetComponent<EngineControler>().centerOfTurningIndicator = node;
+        for (int a = 0; a < cameras.Length; a++)
+        {
+            cameras[a].GetComponent<Camera_Movement>().objectToFollow = newShip.transform;
+        }
+        Destroy(oldShip);
+    }
+    /// <summary>
+    /// Method to change player's ship and place it not in place of old
+    /// </summary>
+    /// <param name="newShipID"> Just ID of new ship</param>
+    /// <param name="oldShip"> Old ship that you're changing from</param>
+    /// <param name="where"> If you want to place ship not in position of old one</param>
+    public void ChangeShip(int newShipID, GameObject oldShip, Transform where)
+    {
+        GameObject newShip = Instantiate(ships[newShipID], where.position, where.rotation);
+        newShip.AddComponent<Player_Controler_v2>();
+        newShip.GetComponent<EngineControler>().centerOfTurningIndicator = node;
+        for (int a = 0; a < cameras.Length; a++)
+        {
+            cameras[a].GetComponent<Camera_Movement>().objectToFollow = newShip.transform;
+        }
+        Destroy(oldShip);
+    }
+    /// <summary>
+    /// Function to give player a first ship
+    /// </summary>
+    /// <param name="shipID"> Just ID of new ship</param>
+    /// <param name="where"> Coordinates where to put new ship</param>
+    public void GivePlayerAShip(int shipID, Transform where)
+    {        
+        GameObject newShip = Instantiate(ships[shipID], where.position, where.rotation);
+        newShip.AddComponent<Player_Controler_v2>();
+        newShip.GetComponent<EngineControler>().centerOfTurningIndicator = node;
+        for (int a = 0; a < cameras.Length; a++)
+        {
+            cameras[a].GetComponent<Camera_Movement>().objectToFollow = newShip.transform;
+        }
+    }
+    public void NoParameterFunc()
+    {
+        Debug.Log("Harder daddy!");
+
+        //GameObject newShip = Instantiate(ships[shipID], where.position, where.rotation);
+        //newShip.AddComponent<Player_Controler_v2>();
+        //newShip.GetComponent<EngineControler>().centerOfTurningIndicator = node;
+        //for (int a = 0; a < cameras.Length; a++)
+        //{
+        //    cameras[a].GetComponent<Camera_Movement>().objectToFollow = newShip.transform;
+        //}
     }
 }

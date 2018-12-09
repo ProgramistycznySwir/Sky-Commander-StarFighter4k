@@ -22,7 +22,10 @@ public class Camera_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(objectToFollow.position.x, objectToFollow.position.y, z);
+        if(objectToFollow != null)
+        {
+            transform.position = new Vector3(objectToFollow.position.x, objectToFollow.position.y, z);
+        }        
         if(scrool) gameObject.GetComponent<Camera>().orthographicSize -= Input.GetAxis("Mouse ScrollWheel");
     }
 }
