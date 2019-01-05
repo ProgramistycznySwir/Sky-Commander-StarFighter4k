@@ -52,13 +52,13 @@ MonoBehaviour:
   projectile: {fileID: 6601129168220101878, guid: 155e7db24db028f46828875e8b54f1a4,
     type: 3}
   projectileSpeed: 250
-  deriveSpeed: 1
+  deriveSpeed: 0
   projectilesAtOnce: 1
   displacementInOneShot: 0
   shotHitscan: 1
   distance: 1000
   lineRenderer: {fileID: 3894917802848901464}
-  firerate: 0.1
+  firerate: 1
   reloadRate: 0.5
   magazineSize: 5
   rounds: 0

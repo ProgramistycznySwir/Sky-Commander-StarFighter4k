@@ -83,12 +83,13 @@ public class Front_Canon_Control : MonoBehaviour
         //Debug.Log(Input.mousePosition);
 
         ///delet dis after fixing the script...
+        Debug.Log("Firerate: " + firerateVAR + " Rounds: " + rounds + " / " + magazineSize);
     }
 
     public void Fire()
     {
         Debug.Log("1");
-        if (shotHitscan) FireHitscan();
+        if (shotHitscan) { FireHitscan(); }
         else if (firerateVAR < 0 && rounds > 0)
         {
             int b = projectilesAtOnce;
@@ -108,7 +109,6 @@ public class Front_Canon_Control : MonoBehaviour
     }
     public void FireHitscan()
     {
-        firerateVAR = 1;
         Debug.Log("2");        
         if (firerateVAR < 0 && rounds > 0)
         {            
@@ -122,10 +122,10 @@ public class Front_Canon_Control : MonoBehaviour
                 int layerMask = 1 << 10; // który layer ignorować
                 layerMask = ~layerMask;
 
-                int layerMask1 = 1 << 9; // który layer ignorować
-                layerMask1 = ~layerMask1;
+                //int layerMask1 = 1 << 9; // który layer ignorować
+                //layerMask1 = ~layerMask1;
 
-                RaycastHit2D hit = Physics2D.Raycast(barrelEnds[a].position, barrelEnds[a].up, layerMask + layerMask1);
+                RaycastHit2D hit = Physics2D.Raycast(barrelEnds[a].position, barrelEnds[a].up, layerMask/* + layerMask1*/);
 
                 lineRenderer.SetPosition(0, barrelEnds[a].position);
                 lineRenderer.SetPosition(1, hit.point);
