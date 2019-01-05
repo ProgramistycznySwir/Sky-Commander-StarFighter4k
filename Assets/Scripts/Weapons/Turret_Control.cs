@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Turret_Control : MonoBehaviour
 {
-    [Header("Cursor:")]
-    public Texture2D cursorTexture;
-    public CursorMode cursorMode = CursorMode.Auto;
-    public Vector2 hotSpot = Vector2.zero;
-
     [Header("Barrel ends:")]
     public Transform[] barrelEnds;
 
@@ -20,6 +15,11 @@ public class Turret_Control : MonoBehaviour
     public float displacementInOneShot = -0.005f;
     int a;
 
+    [Header("Hitscan:")]
+    public bool shotHitscan = false;
+    public float distance = 1000;
+    public LineRenderer lineRenderer;
+
     [Header("Firerate and Reloading:")]
     public float firerate = 1f;
     float firerateVAR = 0f;
@@ -29,11 +29,14 @@ public class Turret_Control : MonoBehaviour
     [HideInInspector]
     public int rounds = 0;
 
+    [SerializeField]
+    public Vector3 target;
+
+    bool firingThisFrame = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-
         rounds = magazineSize;
     }
 
@@ -47,33 +50,39 @@ public class Turret_Control : MonoBehaviour
         }
         else reloadVAR -= reloadRate * Time.deltaTime;
 
-        Vector3 cursor = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = new Vector2(cursor.x - transform.position.x, cursor.y - transform.position.y);
+        Vector2 direction = new Vector2(target.x - transform.position.x, target.y - transform.position.y);
         transform.up = direction;
 
-
-        if (Input.GetMouseButton(0)) //if 
+        if (!firingThisFrame)
         {
-            if (firerateVAR < 0 && rounds > 0)
-            {
-                int b = projectilesAtOnce;
-                int c = 0;
-                while (b > 0)
-                {
-                    GameObject newProjectile = Instantiate<GameObject>(projectile, barrelEnds[a].position + (barrelEnds[a].up * displacementInOneShot * c), barrelEnds[a].rotation);
-                    if (deriveSpeed) newProjectile.GetComponent<Rigidbody2D>().velocity = ToVector2(newProjectile.transform.up) * projectileSpeed + gameObject.GetComponentInParent<Rigidbody2D>().velocity;
-                    else newProjectile.GetComponent<Rigidbody2D>().velocity = ToVector2(newProjectile.transform.up) * projectileSpeed;
-                    a++; b--; c++;
-                    if (a >= barrelEnds.Length) a = 0;
-                }
-                firerateVAR = 1;
-                rounds--; 
-            }            
+            reloadVAR -= reloadRate * Time.deltaTime; //if lmb is not pushed reloading is twice faster
+            firingThisFrame = false;
         }
-        else reloadVAR -= reloadRate * Time.deltaTime; //if lmb is not pushed reloading is twice faster
         firerateVAR -= firerate * Time.deltaTime;
         //Debug.Log(Input.mousePosition);
     }
+
+    public void Fire()
+    {
+        /*if (shotHitscan)// FireHitscan();
+        else*/ if (firerateVAR < 0 && rounds > 0)
+        {
+            int b = projectilesAtOnce;
+            int c = 0;
+            while (b > 0)
+            {
+                GameObject newProjectile = Instantiate<GameObject>(projectile, barrelEnds[a].position + (barrelEnds[a].up * displacementInOneShot * c), barrelEnds[a].rotation);
+                if (deriveSpeed) newProjectile.GetComponent<Rigidbody2D>().velocity = ToVector2(newProjectile.transform.up) * projectileSpeed + gameObject.GetComponentInParent<Rigidbody2D>().velocity;
+                else newProjectile.GetComponent<Rigidbody2D>().velocity = ToVector2(newProjectile.transform.up) * projectileSpeed;
+                a++; b--; c++;
+                if (a >= barrelEnds.Length) a = 0;
+            }
+            firerateVAR = 1;
+            rounds--;
+        }
+        firingThisFrame = true;
+    }
+
     public static Vector2 ToVector2(Vector3 vector3)
     {
         return new Vector2(vector3.x, vector3.y);

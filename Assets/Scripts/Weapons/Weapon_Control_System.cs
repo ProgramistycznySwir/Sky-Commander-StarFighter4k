@@ -10,8 +10,11 @@ public class Weapon_Control_System : MonoBehaviour
     public Vector2 hotSpot = Vector2.zero;
 
     [Header("Sockets:")]
+    public bool anyTurrets = false;
     public Turret_Control[] turrets;
+    public bool anyRocketLaunchers = false;
     public Rocket_Launcher_Script[] rocketLaunchers;
+    public bool anyFrontCannons = false;
     public Front_Canon_Control[] frontCannons;
 
     public KeyCode fireTurrets;
@@ -27,10 +30,21 @@ public class Weapon_Control_System : MonoBehaviour
     void Start()
     {
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-        for(int a=0; a < frontCannons.Length; a++)
-        {            
-            magazineSize += frontCannons[a].magazineSize;
+        if (anyTurrets)
+        {
+            for (int a = 0; a < turrets.Length; a++)
+            {
+                magazineSize += turrets[a].magazineSize;
+            }
         }
+
+        if (anyFrontCannons)
+        {
+            for (int a = 0; a < frontCannons.Length; a++)
+            {
+                magazineSize += frontCannons[a].magazineSize;
+            }
+        }        
     }
 
     // Update is called once per frame
@@ -42,18 +56,35 @@ public class Weapon_Control_System : MonoBehaviour
         //transform.up = direction;
 
         rounds = 0;
-
-        int a = 0;
-        while (a < frontCannons.Length)
+        if (anyTurrets)
         {
-            frontCannons[a].target = cursor;
-            if (Input.GetMouseButton(0))
+            int a = 0;
+            while (a < turrets.Length)
             {
-                frontCannons[a].Fire();
-            }            
-            rounds += frontCannons[a].rounds;
-            a++;
+                turrets[a].target = cursor;
+                if (Input.GetMouseButton(0))
+                {
+                    turrets[a].Fire();
+                }
+                rounds += turrets[a].rounds;
+                a++;
+            }
         }
-        
+
+
+        if (anyFrontCannons)
+        {            
+            int a = 0;
+            while (a < frontCannons.Length)
+            {
+                frontCannons[a].target = cursor;
+                if (Input.GetMouseButton(1))
+                {
+                    frontCannons[a].Fire();
+                }
+                rounds += frontCannons[a].rounds;
+                a++;
+            }
+        }
     }
 }

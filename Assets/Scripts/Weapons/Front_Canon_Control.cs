@@ -81,10 +81,13 @@ public class Front_Canon_Control : MonoBehaviour
 
         firerateVAR -= firerate * Time.deltaTime;
         //Debug.Log(Input.mousePosition);
+
+        ///delet dis after fixing the script...
     }
 
     public void Fire()
     {
+        Debug.Log("1");
         if (shotHitscan) FireHitscan();
         else if (firerateVAR < 0 && rounds > 0)
         {
@@ -105,12 +108,17 @@ public class Front_Canon_Control : MonoBehaviour
     }
     public void FireHitscan()
     {
+        firerateVAR = 1;
+        Debug.Log("2");        
         if (firerateVAR < 0 && rounds > 0)
-        {
+        {            
+            Debug.Log("2.5");
             int b = projectilesAtOnce;
             int c = 0;
+            Debug.Log("3");
             while (b > 0)
             {
+                Debug.Log("4");
                 int layerMask = 1 << 10; // który layer ignorować
                 layerMask = ~layerMask;
 
@@ -134,7 +142,6 @@ public class Front_Canon_Control : MonoBehaviour
             firerateVAR = 1;
             rounds--;
         }
-        firingThisFrame = true;
     }
     public static Vector2 ToVector2(Vector3 vector3)
     {

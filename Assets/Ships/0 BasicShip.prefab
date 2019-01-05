@@ -110,8 +110,11 @@ MonoBehaviour:
   cursorTexture: {fileID: 0}
   cursorMode: 0
   hotSpot: {x: 0, y: 0}
+  anyTurrets: 0
   turrets: []
+  anyRocketLaunchers: 0
   rocketLaunchers: []
+  anyFrontCannons: 1
   frontCannons:
   - {fileID: 6824250630726438024}
   - {fileID: 6824250629859031232}
