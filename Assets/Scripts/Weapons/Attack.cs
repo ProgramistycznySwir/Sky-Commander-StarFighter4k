@@ -5,7 +5,7 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     [Header("Settings:")]
-    public float damage = 3f;
+    public float damage;
     public int materialisationDelay = 1;
     
 
@@ -16,10 +16,10 @@ public class Attack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("Done shit");
-        if (collider.GetComponent<Stats>() != null)
+        Stats _stats;
+        if (_stats = collider.GetComponentInParent<Stats>())
         {
-            collider.GetComponent<Stats>().TakeDamage(damage);
+            _stats.TakeDamage(damage);
         }
         Destroy(gameObject);
     }

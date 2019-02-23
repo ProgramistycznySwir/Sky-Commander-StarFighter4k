@@ -83,12 +83,12 @@ public class Front_Canon_Control : MonoBehaviour
         //Debug.Log(Input.mousePosition);
 
         ///delet dis after fixing the script...
-        Debug.Log("Firerate: " + firerateVAR + " Rounds: " + rounds + " / " + magazineSize);
+        //Debug.Log("Firerate: " + firerateVAR + " Rounds: " + rounds + " / " + magazineSize);
     }
 
     public void Fire()
     {
-        Debug.Log("1");
+        //Debug.Log("1");
         if (shotHitscan) { FireHitscan(); }
         else if (firerateVAR < 0 && rounds > 0)
         {
@@ -98,7 +98,7 @@ public class Front_Canon_Control : MonoBehaviour
             {
                 GameObject newProjectile = Instantiate<GameObject>(projectile, barrelEnds[a].position + (barrelEnds[a].up * displacementInOneShot * c), barrelEnds[a].rotation);
                 if (deriveSpeed) newProjectile.GetComponent<Rigidbody2D>().velocity = ToVector2(newProjectile.transform.up) * projectileSpeed + gameObject.GetComponentInParent<Rigidbody2D>().velocity;
-                else newProjectile.GetComponent<Rigidbody2D>().velocity = ToVector2(newProjectile.transform.up) * projectileSpeed;
+                else newProjectile.GetComponent<MarchingBullet>().velocity = projectileSpeed; //newProjectile.GetComponent<Rigidbody2D>().velocity = ToVector2(newProjectile.transform.up) * projectileSpeed;
                 a++; b--; c++;
                 if (a >= barrelEnds.Length) a = 0;
             }
@@ -107,6 +107,8 @@ public class Front_Canon_Control : MonoBehaviour
         }
         firingThisFrame = true;
     }
+
+    public GameObject knob;
     public void FireHitscan()
     {
         Debug.Log("2");        
@@ -125,10 +127,22 @@ public class Front_Canon_Control : MonoBehaviour
                 //int layerMask1 = 1 << 9; // który layer ignorować
                 //layerMask1 = ~layerMask1;
 
-                RaycastHit2D hit = Physics2D.Raycast(barrelEnds[a].position, barrelEnds[a].up, layerMask/* + layerMask1*/);
+                RaycastHit2D hit = Physics2D.Raycast(barrelEnds[a].position, barrelEnds[a].up/*, layerMask/* + layerMask1*/);
+                
 
                 lineRenderer.SetPosition(0, barrelEnds[a].position);
-                lineRenderer.SetPosition(1, hit.point);
+                
+
+                if (hit == true)
+                {
+                    lineRenderer.SetPosition(1, hit.point);
+                    Instantiate(knob, hit.point, Quaternion.identity);
+                }
+                    
+                else
+                {
+                    lineRenderer.SetPosition(1, barrelEnds[a].position + Vector3.up * 10f);
+                }
 
                 Debug.Log(hit.point);
 
