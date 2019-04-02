@@ -80,9 +80,11 @@ MonoBehaviour:
   - {fileID: 6116611397463903077}
   projectile: {fileID: 5924105842528096658, guid: 08b8ad3e49998df4e8d187b28d5b3274,
     type: 3}
-  projectileSpeed: 30
-  deriveSpeed: 1
-  projectilesAtOnce: 3
+  projectileSpeed: 75
+  range: 40
+  damage: 3
+  matterialisationDelay: 1
+  projectilesAtOnce: 1
   displacementInOneShot: -0.2
   firerate: 30
   reloadRate: 15

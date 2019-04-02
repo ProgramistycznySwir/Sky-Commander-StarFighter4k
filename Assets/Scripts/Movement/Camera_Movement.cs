@@ -28,7 +28,11 @@ public class Camera_Movement : MonoBehaviour
         if(objectToFollow != null)
         {
             transform.position = new Vector3(objectToFollow.position.x, objectToFollow.position.y, z);
-        }        
-        if(scrool) gameObject.GetComponent<Camera>().orthographicSize -= Input.GetAxis("Mouse ScrollWheel");
+        }
+        if (scrool)
+        {
+            gameObject.GetComponent<Camera>().orthographicSize -= 2 * Input.GetAxis("Mouse ScrollWheel") * gameObject.GetComponent<Camera>().orthographicSize;
+            //gameObject.GetComponent<Camera>().orthographicSize -= Input.GetAxis("Mouse ScrollWheel");
+        } 
     }
 }

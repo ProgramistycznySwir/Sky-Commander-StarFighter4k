@@ -52,19 +52,17 @@ MonoBehaviour:
   projectile: {fileID: 3604453588452945686, guid: 9c128591b8b5027469a9a729d7266864,
     type: 3}
   projectileSpeed: 300
-  deriveSpeed: 0
+  range: 300
+  damage: 3
+  matterialisationDelay: 1
   projectilesAtOnce: 1
   displacementInOneShot: 0
-  shotHitscan: 0
-  distance: 1000
-  lineRenderer: {fileID: 3894917802848901464}
   firerate: 1
   reloadRate: 0.2
   magazineSize: 5
   rounds: 0
   limits: {x: 7.25, y: -7.25}
   target: {x: 0, y: 0, z: 0}
-  knob: {fileID: 0}
 --- !u!120 &3894917802848901464
 LineRenderer:
   m_ObjectHideFlags: 0

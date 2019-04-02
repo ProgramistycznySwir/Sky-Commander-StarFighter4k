@@ -112,13 +112,12 @@ MonoBehaviour:
   - {fileID: 7336367385298129383}
   projectile: {fileID: 5924105842528096658, guid: 15395ee3fb772df4dab1ff7399e0e052,
     type: 3}
-  projectileSpeed: 15
-  deriveSpeed: 1
+  projectileSpeed: 50
+  range: 50
+  damage: 3
+  matterialisationDelay: 1
   projectilesAtOnce: 1
   displacementInOneShot: -0.2
-  shotHitscan: 0
-  distance: 1000
-  lineRenderer: {fileID: 0}
   firerate: 20
   reloadRate: 8
   magazineSize: 20

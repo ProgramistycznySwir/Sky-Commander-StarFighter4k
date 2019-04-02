@@ -10,15 +10,13 @@ public class Turret_Control : MonoBehaviour
     [Header("Projectile:")]
     public GameObject projectile;
     public float projectileSpeed;
-    public bool deriveSpeed = true;
+    public float range;
+    public float damage;
+    public int matterialisationDelay;
+
     public int projectilesAtOnce = 1;
     public float displacementInOneShot = -0.005f;
     int a;
-
-    [Header("Hitscan:")]
-    public bool shotHitscan = false;
-    public float distance = 1000;
-    public LineRenderer lineRenderer;
 
     [Header("Firerate and Reloading:")]
     public float firerate = 1f;
@@ -64,16 +62,14 @@ public class Turret_Control : MonoBehaviour
 
     public void Fire()
     {
-        /*if (shotHitscan)// FireHitscan();
-        else*/ if (firerateVAR < 0 && rounds > 0)
+        if (firerateVAR < 0 && rounds > 0)
         {
             int b = projectilesAtOnce;
             int c = 0;
             while (b > 0)
             {
                 GameObject newProjectile = Instantiate<GameObject>(projectile, barrelEnds[a].position + (barrelEnds[a].up * displacementInOneShot * c), barrelEnds[a].rotation);
-                if (deriveSpeed) newProjectile.GetComponent<Rigidbody2D>().velocity = ToVector2(newProjectile.transform.up) * projectileSpeed + gameObject.GetComponentInParent<Rigidbody2D>().velocity;
-                else newProjectile.GetComponent<Rigidbody2D>().velocity = ToVector2(newProjectile.transform.up) * projectileSpeed;
+                newProjectile.GetComponent<MarchingBullet>().SetStats(projectileSpeed, range, damage, matterialisationDelay);
                 a++; b--; c++;
                 if (a >= barrelEnds.Length) a = 0;
             }
