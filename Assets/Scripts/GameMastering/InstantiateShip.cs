@@ -24,7 +24,6 @@ public class InstantiateShip : MonoBehaviour
         newShip.AddComponent<Player_Controler_v2>();
 
         UIControler.GetComponent<UIControler>().ChangeUIDisplayedTo(1);
-        statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;
         for (int a = 0; a < cameras.Length; a++)
         {
             cameras[a].GetComponent<Camera_Movement>().objectToFollow = newShip.transform;
@@ -43,7 +42,6 @@ public class InstantiateShip : MonoBehaviour
         newShip.AddComponent<Player_Controler_v2>();
 
         UIControler.GetComponent<UIControler>().ChangeUIDisplayedTo(1);
-        statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;
         for (int a = 0; a < cameras.Length; a++)
         {
             cameras[a].GetComponent<Camera_Movement>().objectToFollow = newShip.transform;
@@ -61,7 +59,6 @@ public class InstantiateShip : MonoBehaviour
         newShip.AddComponent<Player_Controler_v2>();
 
         UIControler.GetComponent<UIControler>().ChangeUIDisplayedTo(1);
-        statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;
         for (int a = 0; a < cameras.Length; a++)
         {
             cameras[a].GetComponent<Camera_Movement>().objectToFollow = newShip.transform;
@@ -78,7 +75,6 @@ public class InstantiateShip : MonoBehaviour
         newShip.AddComponent<Player_Controler_v2>();
 
         UIControler.GetComponent<UIControler>().ChangeUIDisplayedTo(1);
-        statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;
         for (int a = 0; a < cameras.Length; a++)
         {
             cameras[a].GetComponent<Camera_Movement>().objectToFollow = newShip.transform;
@@ -95,7 +91,6 @@ public class InstantiateShip : MonoBehaviour
         newShip.AddComponent<Player_Controler_v2>();
 
         UIControler.GetComponent<UIControler>().ChangeUIDisplayedTo(1);
-        statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;
         for (int a = 0; a < cameras.Length; a++)
         {
             cameras[a].GetComponent<Camera_Movement>().objectToFollow = newShip.transform;
@@ -112,7 +107,6 @@ public class InstantiateShip : MonoBehaviour
         newShip.AddComponent<Player_Controler_v2>();
 
         UIControler.GetComponent<UIControler>().ChangeUIDisplayedTo(1);
-        statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;
         for (int a = 0; a < cameras.Length; a++)
         {
             cameras[a].GetComponent<Camera_Movement>().objectToFollow = newShip.transform;

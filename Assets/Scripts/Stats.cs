@@ -7,8 +7,7 @@ public class Stats : MonoBehaviour
     public int teamID;
 
     [Header("Stats:")]
-    public float health;
-    public float maxHealth;
+    public Range hp = new Range(100f);
     public float maxVelocity;
 
     [Header("Sockets:")]
@@ -17,7 +16,7 @@ public class Stats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(0 > health)
+        if(0 > hp.value)
         {
             Die();
         }
@@ -25,11 +24,34 @@ public class Stats : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
-        health -= dmg;
+        hp.value -= dmg;
     }
     public void Die()
     {
         //Instantiate<GameObject>(deathAnimation, transform.position, transform.rotation);
         Destroy(gameObject);
+    }
+}
+
+[System.Serializable]
+public struct Range
+{
+    public float value;
+    public float max;
+
+    public float Percent
+    {
+        get { return value / max; }
+    }
+
+    public Range(float max)
+    {
+        this.max = max;
+        this.value = max;
+    }
+    public Range(float value, float max)
+    {
+        this.value = value;
+        this.max = max;
     }
 }

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Polaroid Background
+  m_Shader: {fileID: -6465566751694194690, guid: 0a86f9baef77dde4c9e29b745b8e9979,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_BFA99FD8:
+        m_Texture: {fileID: 2800000, guid: 7c512aa041db1e640a39334729fa6848, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_DBADFC77:
+        m_Texture: {fileID: 2800000, guid: 06cf51777bd94ad4cb3c1b102dc554fc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_F7CE3E10:
+        m_Texture: {fileID: 2800000, guid: ebc62b51a52ec944f9ad19d47ea5ed60, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_564F8E0A: 0.25
+    - Vector1_7A41C55F: 0
+    - Vector1_E2E243F7: 0.00625
+    m_Colors:
+    - Vector2_3CC7EC78: {r: 500, g: 500, b: 0, a: 0}
+    - Vector2_4B2FD515: {r: 0, g: 0, b: 0, a: 0}
+    - Vector2_7507E186: {r: 10, g: 10, b: 0, a: 0}

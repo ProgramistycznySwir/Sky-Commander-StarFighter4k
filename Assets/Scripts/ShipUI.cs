@@ -10,6 +10,14 @@ public class ShipUI : MonoBehaviour
     public UnityEngine.UI.Image speedBar;
     public UnityEngine.UI.Image overspeedBar;
 
+
+    public Stats stats;
+    public TextMeshProUGUI hpText;
+    public UnityEngine.UI.Image hpBar;
+
+    public TextMeshProUGUI shdText;
+    public UnityEngine.UI.Image shdBar;
+
     // Update is called once per frame
     void Update()
     {
@@ -17,5 +25,9 @@ public class ShipUI : MonoBehaviour
         speedText.text = $"v: {engineControler.rigidbody.velocity.magnitude.ToString("F1")}";
         speedBar.fillAmount = engineControler.rigidbody.velocity.magnitude / engineControler.maxVelocity;
         overspeedBar.fillAmount = (engineControler.rigidbody.velocity.magnitude / engineControler.maxVelocity) - 1f;
+
+        // HP
+        hpText.text = $"HP: {stats.hp.value.ToString("F0")}/{stats.hp.max.ToString("F0")}";
+        hpBar.fillAmount = stats.hp.Percent;
     }
 }
