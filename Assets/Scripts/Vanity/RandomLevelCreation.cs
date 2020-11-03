@@ -23,7 +23,7 @@ public class RandomLevelCreation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateMap();  
+        GenerateMap();
     }
 
     void GenerateMap()

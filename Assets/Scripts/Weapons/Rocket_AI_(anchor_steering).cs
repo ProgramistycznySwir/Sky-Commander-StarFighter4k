@@ -29,11 +29,11 @@ public class Rocket_AI_anchor_steering : MonoBehaviour
         //transform.eulerAngles = new Vector3(0, 0, -((Mathf.Atan2(forceDirrection.x, forceDirrection.y) * 180) / Mathf.PI) - 90);
         if (transform.eulerAngles.z > dirrection)
         {
-            engines.TurnLeft();
+            engines.Turn(-1);
         }
         if (transform.eulerAngles.z < dirrection)
         {
-            engines.TurnRight();
+            engines.Turn(1);
         }
         Debug.Log("dirrection: " + dirrection + " transform: " + transform.eulerAngles.z + " course change: " + courseChange);
     }

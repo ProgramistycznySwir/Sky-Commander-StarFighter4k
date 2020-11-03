@@ -15,195 +15,68 @@ public class EngineControler : MonoBehaviour
     [Tooltip("Power of Front Engines (and RCS).")]
     public float backwardPower;
 
-    [Header("Engine Sprites Sockets:")]
-    public GameObject rearEngines;
-    public GameObject frontEngines;
-    public GameObject rearRCS; 
-    public GameObject frontRCS;
-        
-    [Header("Engine Sprites Settings:")]
-    [Tooltip("Time (in frames) that takes to Rear Engines exhaust to turn fully visible, after start of acceleration.")]
-    public float rearExhausBuildup;
-    [Tooltip("Time (in frames) that takes to Rear Engines exhaust to turn fully invisible, after end of acceleration.")]
-    public float rearExhaustThreshold; //how many frames
-    [SerializeField]
-    [Tooltip("Current state of visibility of Rear Engines exhaust.")]
-    float rearExhaustVisability;
-    [Space(5)]
-    [Tooltip("Time (in frames) that takes to Front Engines exhaust to turn fully visible, after start of acceleration.")]
-    public float frontExhausBuildup;
-    [Tooltip("Time (in frames) that takes to Front Engines exhaust to turn fully invisible, after end of acceleration.")]
-    public float frontExhaustThreshold;
-    [SerializeField]
-    [Tooltip("Current state of visibility of Front Engines exhaust.")]
-    float frontExhaustVisability;
+    [Header("RCS Sprites Sockets:")]
+    public SpriteRenderer rearRCS;
+    public SpriteRenderer frontRCS;
+
+    [Header("Engine exhaust animation Settings:")]
+    public ExhaustAnimation rearExhaust;
+    public ExhaustAnimation frontExhaust;
 
     bool acceleratedThisFrame = false, deacceleratedThisFrame = false;
 
 
-    /// Turning variables;
-    [Header("Turning Sockets:")]
-    public bool showIndicator = true;
-    [Tooltip("Sprite (actually prefab) that indicates center of turning circle that makes spacecraft.")]
-    public GameObject centerOfTurningIndicator;
-
     [Header("Turning Settings:")]
-    public int stunDuration = 25;
+    public float stunDuration = 1f;
     [SerializeField]
-    public int stun;
-    [Tooltip("Deal damage if spacecraft exceedes max speed when turning?")]
-    public bool overspeedDamage = false;
-    [Tooltip("Damage Multiplier (whole dmg is divided by that, soo smaller the number, bigger the damage)")]
-    public float overspeedDamageDivider = 250f;
-    [Tooltip("Power with which spacecraft is pulled toward centerOfTurningCircle (bigger the force, closer the turn).")]
-    public float anchorPower;
-    Vector2 centerOfTurning;
-    Vector2 forceDirrection;
-    bool turningLeft = false, turningRight = false;
-    bool startedTurningLeft = true, startedTurningRight = true;
+    public float stun;
 
-    float velocityOnTurningStart;  // leczenie objawowe :/
+    public float turningSpeed = 1;
+
+    public float maxVelocity = 10f;
+    const float dragWhenSpeeding = 1;
 
 
     void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.tag != "projectile")
-        {
             stun = stunDuration;
-        }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        gameObject.GetComponent<Rigidbody2D>();
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (acceleratedThisFrame)
-        {
-            rearExhaustVisability += 1 / rearExhausBuildup;
-        }
-        else rearExhaustVisability -= 1 / rearExhaustThreshold;
-        if (rearEngines != null)
-        {
-            if (rearExhaustVisability < 0) rearExhaustVisability = 0;
-            else if (rearExhaustVisability > 1) rearExhaustVisability = 1;
-            rearEngines.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, rearExhaustVisability);            
-        }
-
-        if (deacceleratedThisFrame)
-        {
-            frontExhaustVisability += 1 / frontExhausBuildup;
-        }
-        else frontExhaustVisability -= 1 / frontExhaustThreshold;
-        if (frontEngines != null)
-        {
-            if (frontExhaustVisability < 0) frontExhaustVisability = 0;
-            else if (frontExhaustVisability > 1) frontExhaustVisability = 1;
-            frontEngines.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, frontExhaustVisability);
-        }
+        rearExhaust.Animate(acceleratedThisFrame);
+        frontExhaust.Animate(deacceleratedThisFrame);
 
         if (frontRCS != null)
-        {
-            frontRCS.SetActive(deacceleratedThisFrame);
-        }
+            frontRCS.gameObject.SetActive(deacceleratedThisFrame);
         if (rearRCS != null)
-        {
-            rearRCS.SetActive(acceleratedThisFrame);
-        }
-        
+            rearRCS.gameObject.SetActive(acceleratedThisFrame);
+
         acceleratedThisFrame = false;
         deacceleratedThisFrame = false;
 
-        if (!turningLeft && !startedTurningLeft)
-        {
-            startedTurningLeft = true;
-            rigidbody.velocity = transform.up * Mathf.Sqrt(velocityOnTurningStart); //to też jest leczeniem objawowym
-            rigidbody.angularVelocity = 0f; // leczenie objawowe
-        }
-        turningLeft = false;
-        if (!turningRight && !startedTurningRight)
-        {
-            startedTurningRight = true;
-            rigidbody.velocity = transform.up * Mathf.Sqrt(velocityOnTurningStart); //i to
-            rigidbody.angularVelocity = 0f; //oraz to <-
-        }
-        turningRight = false;
-        if (stun > 0) stun--;
+        if(stun > 0)
+            stun -= Time.deltaTime;
+
+        // rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxVelocity);
+        rigidbody.drag = rigidbody.velocity.magnitude > maxVelocity ? dragWhenSpeeding : 0f;
     }
 
-    public void Accelerate()
+    public void Accelerate(float input)
     {
-        rigidbody.AddRelativeForce(new Vector2(0, forwardPower));
-        acceleratedThisFrame = true;
+        rigidbody.AddRelativeForce(new Vector2(0, (input > 0 ? forwardPower : backwardPower) * input));
+        acceleratedThisFrame = (input > 0);
+        deacceleratedThisFrame = (input < 0);
     }
-    public void Deaccelerate()
+    public void Turn(float input)
     {
-        rigidbody.AddRelativeForce(new Vector2(0, -backwardPower));
-        deacceleratedThisFrame = true;
+        if(!(stun > 0))
+            rigidbody.angularVelocity = -input * turningSpeed;
     }
-    public void TurnLeft()
-    {
-        if (stun <= 0)
-        {
-            if (startedTurningLeft)
-            {
-                velocityOnTurningStart = rigidbody.velocity.sqrMagnitude;
-                float radiusOfTurning = (rigidbody.mass * rigidbody.velocity.sqrMagnitude) / anchorPower;
 
-                centerOfTurning = transform.position + new Vector3(Mathf.Cos((transform.eulerAngles.z * Mathf.PI) / 180) * -radiusOfTurning, Mathf.Sin((transform.eulerAngles.z * Mathf.PI) / 180) * -radiusOfTurning, 0);
-
-                if (showIndicator) centerOfTurningIndicator.transform.position = centerOfTurning;
-                Debug.Log(centerOfTurning);
-                startedTurningLeft = false;
-            }
-
-            forceDirrection = centerOfTurning - ToVector2(transform.position);
-            rigidbody.AddForce(forceDirrection.normalized * anchorPower);
-            transform.eulerAngles = new Vector3(0, 0, -((Mathf.Atan2(forceDirrection.x, forceDirrection.y) * 180) / Mathf.PI) - 90);
-
-            if (overspeedDamage && gameObject.GetComponent<EngineControler>() && rigidbody.velocity.magnitude > gameObject.GetComponent<Stats>().maxVelocity)
-            {
-                float velocityExceeded = rigidbody.velocity.magnitude - gameObject.GetComponent<Stats>().maxVelocity;
-                gameObject.GetComponent<Stats>().TakeDamage(velocityExceeded / overspeedDamageDivider * rigidbody.mass);
-            }
-
-            turningLeft = true;
-        }
-    }
-    public void TurnRight()
-    {
-        if (stun <= 0)
-        {
-            if (startedTurningRight)
-            {
-                velocityOnTurningStart = rigidbody.velocity.sqrMagnitude;
-                float radiusOfTurning = (rigidbody.mass * rigidbody.velocity.sqrMagnitude) / anchorPower;
-
-                centerOfTurning = transform.position + new Vector3(Mathf.Cos((transform.eulerAngles.z * Mathf.PI) / 180) * radiusOfTurning, Mathf.Sin((transform.eulerAngles.z * Mathf.PI) / 180) * radiusOfTurning, 0);
-
-                if (showIndicator) centerOfTurningIndicator.transform.position = centerOfTurning;
-                Debug.Log(centerOfTurning);
-                startedTurningRight = false;
-            }
-
-            forceDirrection = centerOfTurning - ToVector2(transform.position);
-            rigidbody.AddForce(forceDirrection.normalized * anchorPower);
-            transform.eulerAngles = new Vector3(0, 0, -((Mathf.Atan2(forceDirrection.x, forceDirrection.y) * 180) / Mathf.PI) + 90);
-
-            if (overspeedDamage && gameObject.GetComponent<EngineControler>() && rigidbody.velocity.magnitude > gameObject.GetComponent<Stats>().maxVelocity)
-            {
-                float velocityExceeded = rigidbody.velocity.magnitude - gameObject.GetComponent<Stats>().maxVelocity;
-                gameObject.GetComponent<Stats>().TakeDamage(velocityExceeded / overspeedDamageDivider * rigidbody.mass);
-            }
-
-            turningRight = true; 
-        }
-        else turningLeft = true;
-    }
     public static Vector2 ToVector2(Vector3 vector3)
     {
         return new Vector2(vector3.x, vector3.y);
@@ -225,4 +98,26 @@ public class EngineControler : MonoBehaviour
             exhaustVisability = 1;
         }
         rearExhaustSprite.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, exhaustVisability);
-*/     
+*/
+
+[System.Serializable]
+public struct ExhaustAnimation
+{
+    [Tooltip("Rate (1/[time in seconds]) at which Engine's exhaust turns visible.")]
+    public float buildupRate;
+    [Tooltip("Rate (1/[time in seconds]) at which Engine's exhaust turns invisible.")]
+    public float decayRate;
+    [Tooltip("Current state of visibility of Engine's exhaust.")]
+    public float visability;
+
+    [Tooltip("Animated engine exhaust.")]
+    public SpriteRenderer sprite;
+
+    public void Animate(bool acceleratedThisFrame)
+    {
+        if(sprite == null)
+            return;
+        visability = Mathf.Clamp01(visability + (acceleratedThisFrame ? buildupRate : -decayRate) * Time.deltaTime);
+        sprite.color = new Color(1, 1, 1, visability);
+    }
+}

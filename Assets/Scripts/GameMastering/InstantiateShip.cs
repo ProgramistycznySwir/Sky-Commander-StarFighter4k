@@ -22,7 +22,6 @@ public class InstantiateShip : MonoBehaviour
     {
         GameObject newShip = Instantiate(ships[newShipID], oldShip.transform.position, oldShip.transform.rotation);
         newShip.AddComponent<Player_Controler_v2>();
-        newShip.GetComponent<EngineControler>().centerOfTurningIndicator = node;
 
         UIControler.GetComponent<UIControler>().ChangeUIDisplayedTo(1);
         statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;
@@ -42,7 +41,6 @@ public class InstantiateShip : MonoBehaviour
     {
         GameObject newShip = Instantiate(ships[newShipID], where.position, where.rotation);
         newShip.AddComponent<Player_Controler_v2>();
-        newShip.GetComponent<EngineControler>().centerOfTurningIndicator = node;
 
         UIControler.GetComponent<UIControler>().ChangeUIDisplayedTo(1);
         statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;
@@ -58,10 +56,9 @@ public class InstantiateShip : MonoBehaviour
     /// <param name="shipID"> Just ID of new ship</param>
     /// <param name="where"> Coordinates where to put new ship</param>
     public void GivePlayerAShip(int shipID, Transform where)
-    {        
+    {
         GameObject newShip = Instantiate(ships[shipID], where.position, where.rotation);
         newShip.AddComponent<Player_Controler_v2>();
-        newShip.GetComponent<EngineControler>().centerOfTurningIndicator = node;
 
         UIControler.GetComponent<UIControler>().ChangeUIDisplayedTo(1);
         statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;
@@ -79,7 +76,6 @@ public class InstantiateShip : MonoBehaviour
     {
         GameObject newShip = Instantiate(ships[shipID], whereP, whereQ);
         newShip.AddComponent<Player_Controler_v2>();
-        newShip.GetComponent<EngineControler>().centerOfTurningIndicator = node;
 
         UIControler.GetComponent<UIControler>().ChangeUIDisplayedTo(1);
         statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;
@@ -97,7 +93,6 @@ public class InstantiateShip : MonoBehaviour
     {
         GameObject newShip = Instantiate(ships[shipID], whereP, new Quaternion(0,0,0,0));
         newShip.AddComponent<Player_Controler_v2>();
-        newShip.GetComponent<EngineControler>().centerOfTurningIndicator = node;
 
         UIControler.GetComponent<UIControler>().ChangeUIDisplayedTo(1);
         statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;
@@ -115,7 +110,6 @@ public class InstantiateShip : MonoBehaviour
     {
         GameObject newShip = Instantiate(ships[Random.Range(0, ships.Length)], new Vector3(0,0,0), new Quaternion(0,0,0,0));
         newShip.AddComponent<Player_Controler_v2>();
-        newShip.GetComponent<EngineControler>().centerOfTurningIndicator = node;
 
         UIControler.GetComponent<UIControler>().ChangeUIDisplayedTo(1);
         statsDisplayer.GetComponent<Display_Stats>().shipWhichSpeedDisplay = newShip;

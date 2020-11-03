@@ -28,7 +28,7 @@ public class Rocket_AI : MonoBehaviour
         //float courseChange = dirrection - transform.eulerAngles.z;
         //transform.eulerAngles = new Vector3(0, 0, -((Mathf.Atan2(forceDirrection.x, forceDirrection.y) * 180) / Mathf.PI) - 90);
         transform.up = dirrection.normalized;
-        engines.Accelerate();
+        engines.Accelerate(1f);
         Debug.Log("dirrection: " + dirrection + " transform: " + transform.eulerAngles.z/* + " course change: " + courseChange*/);
     }
 
