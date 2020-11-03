@@ -26,7 +26,7 @@ public class MarchingBullet : MonoBehaviour
                 else
                     Stop();
             }
-            else Move(_distance);
+            Move(_distance);
             matterialisationDelay--;
         }
     }

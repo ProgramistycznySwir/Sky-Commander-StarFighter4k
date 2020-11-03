@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9797091eb391244b7e39031d25363b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 7450972131841874763}
+  stats: {fileID: 2343250743267065265}
   cursorTexture: {fileID: 0}
   cursorMode: 0
   hotSpot: {x: 0, y: 0}
@@ -826,7 +826,7 @@ MonoBehaviour:
   speedText: {fileID: 8235063972798853390}
   speedBar: {fileID: 6072290566495823209}
   overspeedBar: {fileID: 6594321574840061953}
-  stats: {fileID: 7450972131841874763}
+  stats: {fileID: 2343250743267065265}
   hpText: {fileID: 3770625911772999679}
   hpBar: {fileID: 8571326655627876569}
   shdText: {fileID: 2048023879486347366}
@@ -2124,7 +2124,7 @@ GameObject:
   - component: {fileID: 4395341481583273105}
   - component: {fileID: 6633424999815183676}
   - component: {fileID: 5650466265115016922}
-  - component: {fileID: 7450972131841874763}
+  - component: {fileID: 2343250743267065265}
   m_Layer: 9
   m_Name: 1 SmallDoubleEngineShip
   m_TagString: Untagged
@@ -2190,7 +2190,8 @@ MonoBehaviour:
   left: 97
   right: 100
   engineControler: {fileID: 7143767072328739358}
---- !u!114 &7450972131841874763
+  weapon_Control_System: {fileID: 418548320689195769}
+--- !u!114 &2343250743267065265
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2199,7 +2200,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8445646180259085738}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c51d43e09d595724680fcc462164205b, type: 3}
+  m_Script: {fileID: 11500000, guid: 54478677ff81c9a43996bcec931e2ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   teamID: 0

@@ -10,7 +10,7 @@ Material:
   m_Name: Polaroid Background
   m_Shader: {fileID: -6465566751694194690, guid: 0a86f9baef77dde4c9e29b745b8e9979,
     type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0

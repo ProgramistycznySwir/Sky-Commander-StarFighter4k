@@ -23,8 +23,8 @@ public class ShipUI : MonoBehaviour
     {
         // Speed
         speedText.text = $"v: {engineControler.rigidbody.velocity.magnitude.ToString("F1")}";
-        speedBar.fillAmount = engineControler.rigidbody.velocity.magnitude / engineControler.maxVelocity;
-        overspeedBar.fillAmount = (engineControler.rigidbody.velocity.magnitude / engineControler.maxVelocity) - 1f;
+        speedBar.fillAmount = engineControler.rigidbody.velocity.magnitude / engineControler.MaxVelocity;
+        overspeedBar.fillAmount = (engineControler.rigidbody.velocity.magnitude / engineControler.MaxVelocity) - 1f;
 
         // HP
         hpText.text = $"HP: {stats.hp.value.ToString("F0")}/{stats.hp.max.ToString("F0")}";

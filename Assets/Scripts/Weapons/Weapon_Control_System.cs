@@ -47,7 +47,6 @@ public class Weapon_Control_System : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 cursor = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //cursorTransform.position = cursor;
         //Vector2 direction = new Vector2(cursor.x - transform.position.x, cursor.y - transform.position.y);
         //transform.up = direction;
@@ -58,11 +57,6 @@ public class Weapon_Control_System : MonoBehaviour
             int a = 0;
             while (a < turrets.Length)
             {
-                turrets[a].target = cursor;
-                if (Input.GetMouseButton(0))
-                {
-                    turrets[a].Fire();
-                }
                 rounds += turrets[a].rounds;
                 a++;
             }
@@ -74,14 +68,31 @@ public class Weapon_Control_System : MonoBehaviour
             int a = 0;
             while (a < frontCannons.Length)
             {
-                frontCannons[a].target = cursor;
-                if (Input.GetMouseButton(1))
-                {
-                    frontCannons[a].Fire();
-                }
                 rounds += frontCannons[a].rounds;
                 a++;
             }
         }
+    }
+
+    public void AimAt(Vector3 target)
+    {
+        if (turrets != null)
+            for(int i = 0; i < turrets.Length; i++)
+                turrets[i].target = target;
+
+        if (frontCannons != null)
+            for(int i = 0; i < frontCannons.Length; i++)
+                frontCannons[i].target = target;
+    }
+
+    public void Fire(bool fireTurrets, bool fireFrontCannons)
+    {
+        if (turrets != null)
+            for(int i = 0; i < turrets.Length; i++)
+                turrets[i].Fire();
+
+        if (frontCannons != null)
+            for(int i = 0; i < frontCannons.Length; i++)
+                frontCannons[i].Fire();
     }
 }

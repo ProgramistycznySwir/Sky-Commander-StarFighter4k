@@ -33,9 +33,22 @@ public class EngineControler : MonoBehaviour
 
     public float turningSpeed = 1;
 
-    public float maxVelocity = 10f;
-    const float dragWhenSpeeding = 1;
+    public float __maxVelocity = 10f;
+    float maxVelocity__;
+    public float MaxVelocity
+    {
+        get { return maxVelocity__; }
+        // set { rigidbody.drag = forwardPower / (value * value); maxVelocity__ = value;}
+        // set { rigidbody.drag = forwardPower / (Time.fixedDeltaTime * (rigidbody.mass * value + forwardPower)); maxVelocity__ = value;}
+        // set { rigidbody.drag = forwardPower / ((value * rigidbody.mass) + forwardPower * Time.deltaTime); maxVelocity__ = value;}
+        set { rigidbody.drag = 10 / value; maxVelocity__ = value;}
+    }
 
+
+    void Awake()
+    {
+        MaxVelocity = __maxVelocity;
+    }
 
     void OnCollisionStay2D(Collision2D collision)
     {
@@ -62,7 +75,7 @@ public class EngineControler : MonoBehaviour
             stun -= Time.deltaTime;
 
         // rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxVelocity);
-        rigidbody.drag = rigidbody.velocity.magnitude > maxVelocity ? dragWhenSpeeding : 0f;
+        // rigidbody.drag = rigidbody.velocity.magnitude > maxVelocity ? dragWhenSpeeding : 0f;
     }
 
     public void Accelerate(float input)
