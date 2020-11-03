@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Front_Canon_Control : MonoBehaviour
 {
+    public Stats stats;
+
     [Header("Barrel ends:")]
     public Transform[] barrelEnds;
 
@@ -17,8 +19,8 @@ public class Front_Canon_Control : MonoBehaviour
     public int projectilesAtOnce = 1;
     public float displacementInOneShot = -0.005f;
     int a;
-    
-    
+
+
 
     [Header("Firerate and Reloading:")]
     public float firerate = 1f;
@@ -42,27 +44,27 @@ public class Front_Canon_Control : MonoBehaviour
     {
         rounds = magazineSize;
     }
-    
+
 
     void FixedUpdate()
     {
-        
+
         if (reloadVAR < 0 && rounds < magazineSize)
         {
             rounds++;
             reloadVAR = 1f;
         }
         else reloadVAR -= reloadRate * Time.deltaTime;
-        
+
         Vector2 direction = new Vector2(target.x - transform.position.x, target.y - transform.position.y);
         transform.up = direction;
 
-        if(!firingThisFrame) 
+        if(!firingThisFrame)
         {
             reloadVAR -= reloadRate * Time.deltaTime; //if lmb is not pushed reloading is twice faster
             firingThisFrame = false;
         }
-        
+
         float sumValue = 0f;
         sumValue = transform.localEulerAngles.z;
         if(transform.localEulerAngles.z > 180)
@@ -92,7 +94,7 @@ public class Front_Canon_Control : MonoBehaviour
             while (b > 0)
             {
                 GameObject newProjectile = Instantiate<GameObject>(projectile, barrelEnds[a].position + (barrelEnds[a].up * displacementInOneShot * c), barrelEnds[a].rotation);
-                newProjectile.GetComponent<MarchingBullet>().SetStats(projectileSpeed, range, damage, matterialisationDelay);
+                newProjectile.GetComponent<MarchingBullet>().SetStats(stats.teamID, projectileSpeed, range, damage, matterialisationDelay);
                 a++; b--; c++;
                 if (a >= barrelEnds.Length) a = 0;
             }

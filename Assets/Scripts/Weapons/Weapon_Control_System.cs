@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class Weapon_Control_System : MonoBehaviour
 {
+    public Stats stats;
+
     [Header("Cursor:")]
     public Texture2D cursorTexture;
     public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
 
     [Header("Sockets:")]
-    public bool anyTurrets = false;
     public Turret_Control[] turrets;
-    public bool anyRocketLaunchers = false;
     public Rocket_Launcher_Script[] rocketLaunchers;
-    public bool anyFrontCannons = false;
     public Front_Canon_Control[] frontCannons;
 
     public KeyCode fireTurrets;
@@ -30,21 +29,19 @@ public class Weapon_Control_System : MonoBehaviour
     void Start()
     {
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-        if (anyTurrets)
-        {
-            for (int a = 0; a < turrets.Length; a++)
+        if (turrets != null)
+            foreach (Turret_Control turret in turrets)
             {
-                magazineSize += turrets[a].magazineSize;
+                magazineSize += turret.magazineSize;
+                turret.stats = stats;
             }
-        }
 
-        if (anyFrontCannons)
-        {
-            for (int a = 0; a < frontCannons.Length; a++)
+        if (frontCannons != null)
+            foreach (Front_Canon_Control frontCannon in frontCannons)
             {
-                magazineSize += frontCannons[a].magazineSize;
+                magazineSize += frontCannon.magazineSize;
+                frontCannon.stats = stats;
             }
-        }        
     }
 
     // Update is called once per frame
@@ -56,7 +53,7 @@ public class Weapon_Control_System : MonoBehaviour
         //transform.up = direction;
 
         rounds = 0;
-        if (anyTurrets)
+        if (turrets != null)
         {
             int a = 0;
             while (a < turrets.Length)
@@ -72,8 +69,8 @@ public class Weapon_Control_System : MonoBehaviour
         }
 
 
-        if (anyFrontCannons)
-        {            
+        if (frontCannons != null)
+        {
             int a = 0;
             while (a < frontCannons.Length)
             {

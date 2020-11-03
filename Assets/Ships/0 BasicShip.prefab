@@ -763,14 +763,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9797091eb391244b7e39031d25363b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 6824250630939997384}
   cursorTexture: {fileID: 0}
   cursorMode: 0
   hotSpot: {x: 0, y: 0}
-  anyTurrets: 0
   turrets: []
-  anyRocketLaunchers: 0
   rocketLaunchers: []
-  anyFrontCannons: 1
   frontCannons:
   - {fileID: 6824250630726438024}
   - {fileID: 6824250629859031232}
@@ -936,6 +934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8961a69191e5f7947a849a5ca83abc5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 6824250630939997384}
   barrelEnds:
   - {fileID: 6824250630637032664}
   projectile: {fileID: 5924105842528096658, guid: 08b8ad3e49998df4e8d187b28d5b3274,
@@ -1301,6 +1300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8961a69191e5f7947a849a5ca83abc5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 6824250630939997384}
   barrelEnds:
   - {fileID: 6824250629580465240}
   projectile: {fileID: 5924105842528096658, guid: 08b8ad3e49998df4e8d187b28d5b3274,
@@ -1380,7 +1380,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
   stunDuration: 2
   stun: 0
-  turningSpeed: 180
+  turningSpeed: 540
   maxVelocity: 10
 --- !u!1 &6824250630793093480
 GameObject:
@@ -1761,6 +1761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51d43e09d595724680fcc462164205b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teamID: 0
   health: 100
   maxHealth: 100
   maxVelocity: 25

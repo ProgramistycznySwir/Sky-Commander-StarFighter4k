@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Turret_Control : MonoBehaviour
 {
+    public Stats stats;
+
     [Header("Barrel ends:")]
     public Transform[] barrelEnds;
 
@@ -69,7 +71,7 @@ public class Turret_Control : MonoBehaviour
             while (b > 0)
             {
                 GameObject newProjectile = Instantiate<GameObject>(projectile, barrelEnds[a].position + (barrelEnds[a].up * displacementInOneShot * c), barrelEnds[a].rotation);
-                newProjectile.GetComponent<MarchingBullet>().SetStats(projectileSpeed, range, damage, matterialisationDelay);
+                newProjectile.GetComponent<MarchingBullet>().SetStats(stats.teamID, projectileSpeed, range, damage, matterialisationDelay);
                 a++; b--; c++;
                 if (a >= barrelEnds.Length) a = 0;
             }
@@ -82,5 +84,5 @@ public class Turret_Control : MonoBehaviour
     public static Vector2 ToVector2(Vector3 vector3)
     {
         return new Vector2(vector3.x, vector3.y);
-    }    
+    }
 }
