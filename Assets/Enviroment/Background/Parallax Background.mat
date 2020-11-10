@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Polaroid Background
+  m_Name: Parallax Background
   m_Shader: {fileID: -6465566751694194690, guid: 0a86f9baef77dde4c9e29b745b8e9979,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
@@ -39,4 +39,4 @@ Material:
     m_Colors:
     - Vector2_3CC7EC78: {r: 500, g: 500, b: 0, a: 0}
     - Vector2_4B2FD515: {r: 0, g: 0, b: 0, a: 0}
-    - Vector2_7507E186: {r: 10, g: 10, b: 0, a: 0}
+    - Vector2_7507E186: {r: 20, g: 20, b: 0, a: 0}

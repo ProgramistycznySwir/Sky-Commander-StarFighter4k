@@ -87,11 +87,11 @@ public class Weapon_Control_System : MonoBehaviour
 
     public void Fire(bool fireTurrets, bool fireFrontCannons)
     {
-        if (turrets != null)
+        if (turrets != null && fireTurrets)
             for(int i = 0; i < turrets.Length; i++)
                 turrets[i].Fire();
 
-        if (frontCannons != null)
+        if (frontCannons != null && fireFrontCannons)
             for(int i = 0; i < frontCannons.Length; i++)
                 frontCannons[i].Fire();
     }

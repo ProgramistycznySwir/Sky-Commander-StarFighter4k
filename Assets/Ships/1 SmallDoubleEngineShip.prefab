@@ -103,7 +103,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 0.75}
+  m_Size: {x: 0.4, y: 0.75}
   m_Direction: 0
 --- !u!1 &687782326111588407
 GameObject:
@@ -1675,7 +1675,7 @@ MonoBehaviour:
   stunDuration: 2
   stun: 0
   turningSpeed: 270
-  maxVelocity: 7
+  __maxVelocity: 10
 --- !u!1 &7259363835063263059
 GameObject:
   m_ObjectHideFlags: 0
